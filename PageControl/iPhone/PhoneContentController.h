@@ -50,6 +50,11 @@
 
 #import "ContentController.h"
 
+extern const NSString *BookmarkKey;
+extern const NSString *MarkedGroup;
+extern const NSString *MarkedGroupKey;
+extern const NSString *MarkedPage;
+
 @interface PhoneContentController : UIViewController <UIScrollViewDelegate>
 {   
     UIScrollView *scrollView;
@@ -60,6 +65,8 @@
     BOOL pageControlUsed;
 }
 @property (nonatomic, strong) NSArray *contentList;
+@property (nonatomic, strong) NSDictionary *contentDictionary;
+
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 

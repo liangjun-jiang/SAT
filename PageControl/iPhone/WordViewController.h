@@ -52,6 +52,7 @@
 {
     UILabel *typeLabel;
     int pageNumber;
+    int totalPage;
     
     UILabel *wordLabel;
     
@@ -66,6 +67,6 @@
 
 
 
-- (id)initWithPageNumber:(int)page;
+- (id)initWithPageNumber:(int)page andTotal:(int)total;
 
 @end

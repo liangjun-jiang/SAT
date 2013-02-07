@@ -52,11 +52,12 @@
 @synthesize typeLabel, wordLabel, meanLabel, pageNumberLabel;
 
 // load the view nib and initialize the pageNumber ivar
-- (id)initWithPageNumber:(int)page
+- (id)initWithPageNumber:(int)page andTotal:(int)total
 {
     if (self = [super initWithNibName:@"MyView" bundle:nil])
     {
         pageNumber = page;
+        totalPage = total;
     }
     return self;
 }
@@ -65,7 +66,7 @@
 // set the label and background color when the view has finished loading
 - (void)viewDidLoad
 {
-    self.pageNumberLabel.text = [NSString stringWithFormat:@"Page %d", pageNumber + 1];
+    self.pageNumberLabel.text = [NSString stringWithFormat:@"%d of %d", pageNumber, totalPage];
 }
 
 @end

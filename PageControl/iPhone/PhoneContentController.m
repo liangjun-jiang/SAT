@@ -54,9 +54,18 @@ static NSString *NameKey = @"word";
 static NSString *TypeKey = @"type";
 static NSString *MeaningKey = @"meaning";
 
+NSString *BookmarkKey = @"bookmark";
+NSString *MarkedGroupKey = @"markedGroupKey";
+NSString *MarkedGroup = @"markedGroup";
+
+NSString *MarkedPage = @"markedPage";
+
 @interface PhoneContentController()
 
 @property (nonatomic, assign) NSUInteger kNumberOfPages;
+@property (nonatomic, assign) NSUInteger markedPageNumber;
+
+
 @end
 
 
@@ -69,7 +78,7 @@ static NSString *MeaningKey = @"meaning";
 @implementation PhoneContentController
 
 @synthesize scrollView, pageControl, viewControllers, contentList;
-@synthesize kNumberOfPages;
+@synthesize kNumberOfPages , contentDictionary, markedPageNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -85,7 +94,7 @@ static NSString *MeaningKey = @"meaning";
 {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"", @"");
+    self.title = self.contentDictionary[MarkedGroupKey];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.myTabBarController.tabBar setHidden:YES];
@@ -93,9 +102,10 @@ static NSString *MeaningKey = @"meaning";
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStyleDone target:self action:@selector(onDone:)];
     self.navigationItem.leftBarButtonItem = doneButton;
     
-    // load our data from a plist file inside our app bundle
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"content_iPhone" ofType:@"plist"];
-//    self.contentList = [NSArray arrayWithContentsOfFile:path];
+    UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonSystemItemOrganize target:self action:@selector(onBookmark:)];
+    self.navigationItem.rightBarButtonItem = bookmarkButton;
+    
+    self.contentList = self.contentDictionary[MarkedGroup];
     
     if ([self.contentList count] > 0) {
         kNumberOfPages = [self.contentList count];
@@ -120,14 +130,25 @@ static NSString *MeaningKey = @"meaning";
     scrollView.delegate = self;
     
     pageControl.numberOfPages = kNumberOfPages;
-    pageControl.currentPage = 0;
+    
     
     // pages are created on demand
     // load the visible page
     // load the page on either side to avoid flashes when the user starts scrolling
-    //
-    [self loadScrollViewWithPage:0];
-    [self loadScrollViewWithPage:1];
+    // TODO:  check if the user has bookmarked somewhere
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:BookmarkKey] !=nil) {
+        NSDictionary *bookmarkDict = [defaults objectForKey:BookmarkKey];
+        markedPageNumber = [bookmarkDict[MarkedPage] integerValue];
+        pageControl.currentPage = markedPageNumber;
+        if (markedPageNumber -1 > 0) {
+            [self changePage:nil];
+        }
+    } else {
+        pageControl.currentPage = 0;
+        [self loadScrollViewWithPage:0];
+        [self loadScrollViewWithPage:1];
+    }
     
 }
 
@@ -139,6 +160,20 @@ static NSString *MeaningKey = @"meaning";
     }];
 }
 
+- (void)onBookmark:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = @{MarkedGroupKey:contentDictionary[MarkedGroupKey], MarkedPage:[NSNumber numberWithInt:pageControl.currentPage]};
+  
+    [defaults setObject:dict forKey:BookmarkKey];
+    
+    [defaults synchronize];
+    
+    NSString *message = [NSString stringWithFormat:@"current page : %d is remembered.",pageControl.currentPage];
+    
+    [[[UIAlertView alloc] initWithTitle:@"Bookmark" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    
+}
 
 #pragma mark - helpers
 
@@ -153,7 +188,7 @@ static NSString *MeaningKey = @"meaning";
     WordViewController *controller = viewControllers[page];
     if ((NSNull *)controller == [NSNull null])
     {
-        controller = [[WordViewController alloc] initWithPageNumber:page];
+        controller = [[WordViewController alloc] initWithPageNumber:page andTotal:kNumberOfPages];
         viewControllers[page] = controller;
     }
     
