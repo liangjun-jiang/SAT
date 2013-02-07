@@ -50,7 +50,7 @@
 
 #import "ContentController.h"
 
-extern const NSString *BookmarkKey;
+extern NSString * const BookmarkKey;
 extern const NSString *MarkedGroup;
 extern const NSString *MarkedGroupKey;
 extern const NSString *MarkedPage;

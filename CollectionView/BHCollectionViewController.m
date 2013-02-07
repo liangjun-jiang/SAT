@@ -44,7 +44,11 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     return self;
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.collectionView reloadData];
+}
 
 - (void)viewDidLoad
 {
@@ -69,41 +73,12 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
         [self.wordsByGroup addObject:dict];
     }];
     
-//    NSLog(@"each section count :%@", dict);
-    
-    
-//    self.albums = [NSMutableArray array];
-//
-//    NSURL *urlPrefix = [NSURL URLWithString:@"https://raw.github.com/ShadoFlameX/PhotoCollectionView/master/Photos/"];
-//	
-//    NSInteger photoIndex = 0;
-//    
-//    for (NSInteger a = 0; a < 12; a++) {
-//        BHAlbum *album = [[BHAlbum alloc] init];
-//        album.name = [NSString stringWithFormat:@"Photo Album %d",a + 1];
-//        
-//        NSUInteger photoCount = arc4random()%4 + 2;
-//        for (NSInteger p = 0; p < photoCount; p++) {
-//            // there are up to 25 photos available to load from the code repository
-//            NSString *photoFilename = [NSString stringWithFormat:@"thumbnail%d.jpg",photoIndex % 25];
-//            NSURL *photoURL = [urlPrefix URLByAppendingPathComponent:photoFilename];
-//            BHPhoto *photo = [BHPhoto photoWithImageURL:photoURL];
-//            [album addPhoto:photo];
-//            
-//            photoIndex++;
-//        }
-//        
-//        [self.albums addObject:album];
-//    }
     
     [self.collectionView registerClass:[BHAlbumPhotoCell class]
             forCellWithReuseIdentifier:PhotoCellIdentifier];
     [self.collectionView registerClass:[BHAlbumTitleReusableView class]
             forSupplementaryViewOfKind:BHPhotoAlbumLayoutAlbumTitleKind
                    withReuseIdentifier:AlbumTitleIdentifier];
-    
-//    self.thumbnailQueue = [[NSOperationQueue alloc] init];
-//    self.thumbnailQueue.maxConcurrentOperationCount = 3;
 }
 
 - (void)didReceiveMemoryWarning
@@ -173,7 +148,19 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     NSDictionary *dict = self.wordsByGroup[indexPath.section];
     NSString *key = self.sections[indexPath.section];
     
-    titleView.titleLabel.text = [NSString stringWithFormat:@"total: %d", [dict[key] count]];
+    NSUInteger markedPageNumber = 0;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:BookmarkKey] !=nil) {
+        NSDictionary *bookmarkDict = [defaults objectForKey:BookmarkKey];
+        markedPageNumber = [bookmarkDict[MarkedPage] integerValue];
+        if ([key isEqualToString:bookmarkDict[MarkedGroupKey]]) {
+            titleView.titleLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
+        } else
+            titleView.titleLabel.text = [NSString stringWithFormat:@"total: %d",[dict[key] count]];
+        
+    } else
+         titleView.titleLabel.text = [NSString stringWithFormat:@"total: %d",[dict[key] count]];
+    
     
     return titleView;
 }
@@ -187,8 +174,6 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     PhoneContentController *contentController = [[PhoneContentController alloc] initWithNibName:@"PhoneContent" bundle:nil];
     NSDictionary *contentDictionary = @{MarkedGroupKey:key, MarkedGroup:words};
     contentController.contentDictionary = contentDictionary;
-    
-//    contentController.contentList = words;
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController];
     [self.navigationController pushViewController:contentController animated:YES];

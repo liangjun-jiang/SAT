@@ -54,7 +54,7 @@ static NSString *NameKey = @"word";
 static NSString *TypeKey = @"type";
 static NSString *MeaningKey = @"meaning";
 
-NSString *BookmarkKey = @"bookmark";
+NSString * const BookmarkKey = @"bookmark";
 NSString *MarkedGroupKey = @"markedGroupKey";
 NSString *MarkedGroup = @"markedGroup";
 
@@ -131,18 +131,15 @@ NSString *MarkedPage = @"markedPage";
     
     pageControl.numberOfPages = kNumberOfPages;
     
-    
-    // pages are created on demand
-    // load the visible page
-    // load the page on either side to avoid flashes when the user starts scrolling
-    // TODO:  check if the user has bookmarked somewhere
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:BookmarkKey] !=nil) {
         NSDictionary *bookmarkDict = [defaults objectForKey:BookmarkKey];
-        markedPageNumber = [bookmarkDict[MarkedPage] integerValue];
-        pageControl.currentPage = markedPageNumber;
-        if (markedPageNumber -1 > 0) {
-            [self changePage:nil];
+        if ([bookmarkDict[MarkedGroupKey] isEqualToString:self.contentDictionary[MarkedGroupKey]]) {
+            markedPageNumber = [bookmarkDict[MarkedPage] integerValue];
+            pageControl.currentPage = markedPageNumber;
+            if (markedPageNumber -1 > 0) {
+                [self changePage:nil];
+            }
         }
     } else {
         pageControl.currentPage = 0;
@@ -157,6 +154,9 @@ NSString *MarkedPage = @"markedPage";
     [self dismissViewControllerAnimated:YES completion:^{
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.myTabBarController.tabBar setHidden:NO];
+        
+        // We'd better tell BHCollectionViewController reload data
+        
     }];
 }
 
