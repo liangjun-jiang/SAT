@@ -43,6 +43,11 @@
 		53DEEA500DB17ECC00B56347 /* ThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DEEA4E0DB17ECC00B56347 /* ThreeViewController.m */; };
 		53F798150DD143990039426E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F7980F0DD143990039426E /* MainWindow.xib */; };
 		D0E6CCF313C780AC008F8E43 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E6CCF213C780AC008F8E43 /* ReadMe.txt */; };
+		D6090BFF16C562AC0076ACAE /* GenericContact.png in Resources */ = {isa = PBXBuildFile; fileRef = D6090BFB16C562AC0076ACAE /* GenericContact.png */; };
+		D6090C0016C562AC0076ACAE /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6090BFD16C562AC0076ACAE /* TestTableViewController.m */; };
+		D6090C0116C562AC0076ACAE /* TestTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6090BFE16C562AC0076ACAE /* TestTableViewController.xib */; };
+		D6090C0516C566CE0076ACAE /* TestModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6090C0316C566CE0076ACAE /* TestModeViewController.m */; };
+		D6090C0616C566CE0076ACAE /* TestModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6090C0416C566CE0076ACAE /* TestModeViewController.xib */; };
 		D69D20FE16C0B1640062FE0C /* BHAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D20D116C0B1630062FE0C /* BHAlbum.m */; };
 		D69D20FF16C0B1640062FE0C /* BHAlbumPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D20D316C0B1630062FE0C /* BHAlbumPhotoCell.m */; };
 		D69D210016C0B1640062FE0C /* BHAlbumTitleReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D20D516C0B1630062FE0C /* BHAlbumTitleReusableView.m */; };
@@ -115,7 +120,7 @@
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* Tabster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tabster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* SAT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SAT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		530FE5D4128337EC00678AD0 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "images/icons/Icon-72.png"; sourceTree = "<group>"; };
@@ -162,6 +167,13 @@
 		53F798100DD143990039426E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0E6CCF213C780AC008F8E43 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		D6090BFB16C562AC0076ACAE /* GenericContact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GenericContact.png; sourceTree = "<group>"; };
+		D6090BFC16C562AC0076ACAE /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
+		D6090BFD16C562AC0076ACAE /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
+		D6090BFE16C562AC0076ACAE /* TestTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewController.xib; sourceTree = "<group>"; };
+		D6090C0216C566CE0076ACAE /* TestModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModeViewController.h; sourceTree = "<group>"; };
+		D6090C0316C566CE0076ACAE /* TestModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModeViewController.m; sourceTree = "<group>"; };
+		D6090C0416C566CE0076ACAE /* TestModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestModeViewController.xib; sourceTree = "<group>"; };
 		D69D20D016C0B1630062FE0C /* BHAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHAlbum.h; sourceTree = "<group>"; };
 		D69D20D116C0B1630062FE0C /* BHAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHAlbum.m; sourceTree = "<group>"; };
 		D69D20D216C0B1630062FE0C /* BHAlbumPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHAlbumPhotoCell.h; sourceTree = "<group>"; };
@@ -264,7 +276,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Tabster.app */,
+				1D6058910D05DD3D006BFB54 /* SAT.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,6 +284,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D6090BFA16C562AC0076ACAE /* TestView */,
 				D69D216C16C0B2AF0062FE0C /* Default-568h@2x.png */,
 				D69D216A16C0B2590062FE0C /* QuartzCore.framework */,
 				D69D212316C0B1880062FE0C /* PageControl */,
@@ -370,6 +383,20 @@
 				535839FA10051E0F00D97F7B /* ModalViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D6090BFA16C562AC0076ACAE /* TestView */ = {
+			isa = PBXGroup;
+			children = (
+				D6090BFB16C562AC0076ACAE /* GenericContact.png */,
+				D6090BFC16C562AC0076ACAE /* TestTableViewController.h */,
+				D6090BFD16C562AC0076ACAE /* TestTableViewController.m */,
+				D6090BFE16C562AC0076ACAE /* TestTableViewController.xib */,
+				D6090C0216C566CE0076ACAE /* TestModeViewController.h */,
+				D6090C0316C566CE0076ACAE /* TestModeViewController.m */,
+				D6090C0416C566CE0076ACAE /* TestModeViewController.xib */,
+			);
+			path = TestView;
 			sourceTree = "<group>";
 		};
 		D69D20CF16C0B1630062FE0C /* CollectionView */ = {
@@ -522,9 +549,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Tabster */ = {
+		1D6058900D05DD3D006BFB54 /* SAT */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Tabster" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SAT" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -534,9 +561,9 @@
 			);
 			dependencies = (
 			);
-			name = Tabster;
+			name = SAT;
 			productName = foo;
-			productReference = 1D6058910D05DD3D006BFB54 /* Tabster.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* SAT.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -547,7 +574,7 @@
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Tabster" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SAT" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -562,7 +589,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Tabster */,
+				1D6058900D05DD3D006BFB54 /* SAT */,
 			);
 		};
 /* End PBXProject section */
@@ -645,6 +672,9 @@
 				D69D216616C0B1880062FE0C /* small_two.png in Resources */,
 				D69D216D16C0B2AF0062FE0C /* Default-568h@2x.png in Resources */,
 				D69D216F16C0B2F50062FE0C /* words.plist in Resources */,
+				D6090BFF16C562AC0076ACAE /* GenericContact.png in Resources */,
+				D6090C0116C562AC0076ACAE /* TestTableViewController.xib in Resources */,
+				D6090C0616C566CE0076ACAE /* TestModeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +711,8 @@
 				D69D215616C0B1880062FE0C /* PhoneContentController.m in Sources */,
 				D69D215716C0B1880062FE0C /* WordViewController.m in Sources */,
 				D69D216916C0B1B30062FE0C /* IndexViewController.m in Sources */,
+				D6090C0016C562AC0076ACAE /* TestTableViewController.m in Sources */,
+				D6090C0516C566CE0076ACAE /* TestModeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,7 +768,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = Tabster;
+				PRODUCT_NAME = SAT;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -753,7 +785,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = Tabster;
+				PRODUCT_NAME = SAT;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -791,7 +823,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Tabster" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SAT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -800,7 +832,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Tabster" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SAT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
