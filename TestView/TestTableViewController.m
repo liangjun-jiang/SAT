@@ -61,6 +61,27 @@
     return self;
 }
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        
+    }
+    
+    return self;
+}
+
+// load the view nib and initialize the pageNumber ivar
+- (id)initWithPageNumber:(int)page andTotal:(int)total
+{
+    if (self = [super initWithNibName:@"TestTableViewController" bundle:nil])
+    {
+//        pageNumber = page;
+//        totalPage = total;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {

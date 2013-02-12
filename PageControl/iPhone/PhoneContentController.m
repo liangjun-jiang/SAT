@@ -48,6 +48,7 @@
 #import "PhoneContentController.h"
 #import "AppDelegate.h"
 #import "WordViewController.h"
+#import "TestTableViewController.h"
 
 
 static NSString *NameKey = @"word";
@@ -185,10 +186,15 @@ NSString *MarkedPage = @"markedPage";
         return;
     
     // replace the placeholder if necessary
-    WordViewController *controller = viewControllers[page];
+//    WordViewController *controller = viewControllers[page];
+    TestTableViewController *controller = viewControllers[page];
+    
     if ((NSNull *)controller == [NSNull null])
     {
-        controller = [[WordViewController alloc] initWithPageNumber:page andTotal:kNumberOfPages];
+//        controller = [[WordViewController alloc] initWithPageNumber:page andTotal:kNumberOfPages];
+        
+        controller = [[TestTableViewController alloc] initWithPageNumber:page andTotal:kNumberOfPages];
+        
         viewControllers[page] = controller;
     }
     
@@ -205,9 +211,9 @@ NSString *MarkedPage = @"markedPage";
         
         //numberItem has key of word, type and meaning ...
         
-        controller.wordLabel.text = numberItem[NameKey];
-        controller.typeLabel.text = numberItem[TypeKey];
-        controller.meanLabel.text = numberItem[MeaningKey];
+//        controller.wordLabel.text = numberItem[NameKey];
+//        controller.typeLabel.text = numberItem[TypeKey];
+//        controller.meanLabel.text = numberItem[MeaningKey];
     }
 }
 

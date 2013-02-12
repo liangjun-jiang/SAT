@@ -13,6 +13,7 @@
 #import "BHPhoto.h"
 #import "BHAlbumTitleReusableView.h"
 #import "PhoneContentController.h"
+#import "GroupedWordViewController.h"
 
 static NSString * const PhotoCellIdentifier = @"PhotoCell";
 static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
@@ -175,7 +176,9 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     NSDictionary *contentDictionary = @{MarkedGroupKey:key, MarkedGroup:words};
     contentController.contentDictionary = contentDictionary;
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController];
+//    GroupedWordViewController *groupWordViewController = [[GroupedWordViewController alloc] initWithNibName:@"GroupedWordViewController" bundle:nil];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController]; //groupWordViewController]; //
     [self.navigationController pushViewController:contentController animated:YES];
     [self presentViewController:navController animated:YES completion:nil];
 }

@@ -62,4 +62,6 @@
 - (IBAction)button1Action:(id)sender;
 - (IBAction)button2Action:(id)sender;
 
+- (id)initWithPageNumber:(int)page andTotal:(int)total;
+
 @end
