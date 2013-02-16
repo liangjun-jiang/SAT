@@ -46,6 +46,7 @@
  */
 
 #import "FeaturedViewController.h"
+#import "AppDelegate.h"
 
 @implementation FeaturedViewController
 
@@ -69,11 +70,43 @@
 		self.titleLabel.hidden = YES;
 	else
 		self.titleLabel.hidden = NO;
+    
+    UIButton *logoutButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [logoutButton setFrame:CGRectMake(20.0, 20.0, 200.0, 100.0)];
+    [logoutButton setTitle:![PFUser currentUser]?@"Login":@"Logout" forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(onLogInOrout:) forControlEvents:UIControlEventTouchUpInside];
+//    if ([PFUser currentUser]) {
+//        [logoutButton addTarget:self action:@selector(onLogInOrout:) forControlEvents:UIControlEventTouchUpInside];
+//    } else
+//        [logoutButton addTarget:self action:@selector(onLogin:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:logoutButton];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES; // support all orientations
+}
+
+- (void)onLogInOrout:(id)sender
+{
+    UIButton *loginOrOutButton = (UIButton *)sender;
+    NSString *title = loginOrOutButton.titleLabel.text;
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if ([title isEqualToString:@"Login"]) {
+        [delegate displayLogin];
+    } else {
+        [delegate logOutButtonTapAction:nil];
+    }
+    
+}
+
+- (void)onLogin:(id)sender
+{
+    
+    
 }
 
 @end

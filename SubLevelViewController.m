@@ -47,7 +47,7 @@
 
 #import "SubLevelViewController.h"
 #import "ModalViewController.h"
-
+#import "AppDelegate.h"
 @interface SubLevelViewController ()
 	@property (nonatomic, strong) NSArray *dataArray;
 @end
@@ -62,7 +62,7 @@
 	
 	self.hidesBottomBarWhenPushed = YES;
 	
-	self.dataArray = @[@"Feature 1", @"Feature 2"];
+	self.dataArray = @[@"Feature 1", @"Feature 2", @"Logout"];
 }
 
 - (void)viewDidUnload
@@ -121,6 +121,17 @@
 	return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2) {
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [delegate logOutButtonTapAction:nil];
+    } else {
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
+    
+}
 
 #pragma mark -
 #pragma mark UIViewControllerRotation

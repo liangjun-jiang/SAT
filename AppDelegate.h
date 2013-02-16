@@ -47,7 +47,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UINavigationControllerDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UINavigationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 {
     UIWindow *window;
     UITabBarController *myTabBarController;
@@ -55,5 +55,9 @@
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 @property (nonatomic, strong) IBOutlet UITabBarController *myTabBarController;
+
+- (void)displayLogin;
+- (void)logOutButtonTapAction:(id)sender;
+
 
 @end

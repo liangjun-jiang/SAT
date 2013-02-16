@@ -119,6 +119,33 @@
 		D69D216B16C0B2590062FE0C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69D216A16C0B2590062FE0C /* QuartzCore.framework */; };
 		D69D216D16C0B2AF0062FE0C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D69D216C16C0B2AF0062FE0C /* Default-568h@2x.png */; };
 		D69D216F16C0B2F50062FE0C /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = D69D216E16C0B2F50062FE0C /* words.plist */; };
+		D6C39E2016CFFF720087D216 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E1F16CFFF720087D216 /* Parse.framework */; };
+		D6C39E2216CFFFB20087D216 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E2116CFFFB20087D216 /* AudioToolbox.framework */; };
+		D6C39E2416CFFFB80087D216 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E2316CFFFB80087D216 /* CFNetwork.framework */; };
+		D6C39E2616CFFFC50087D216 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E2516CFFFC50087D216 /* libz.1.1.3.dylib */; };
+		D6C39E2816CFFFCE0087D216 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E2716CFFFCE0087D216 /* MobileCoreServices.framework */; };
+		D6C39E2A16CFFFD70087D216 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E2916CFFFD70087D216 /* Security.framework */; };
+		D6C39E2C16CFFFED0087D216 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E2B16CFFFED0087D216 /* SystemConfiguration.framework */; };
+		D6C39E3516D001E10087D216 /* MyLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E2F16D001E10087D216 /* MyLogInViewController.m */; };
+		D6C39E3616D001E10087D216 /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E3116D001E10087D216 /* MySignUpViewController.m */; };
+		D6C39E3716D001E10087D216 /* SubclassConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E3316D001E10087D216 /* SubclassConfigViewController.m */; };
+		D6C39E3816D001E10087D216 /* SubclassConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E3416D001E10087D216 /* SubclassConfigViewController.xib */; };
+		D6C39E3C16D002820087D216 /* DefaultSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E3A16D002820087D216 /* DefaultSettingsViewController.m */; };
+		D6C39E3D16D002820087D216 /* DefaultSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E3B16D002820087D216 /* DefaultSettingsViewController.xib */; };
+		D6C39E3F16D0076D0087D216 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E3E16D0076D0087D216 /* libsqlite3.dylib */; };
+		D6C39E4116D0078A0087D216 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E4016D0078A0087D216 /* CoreLocation.framework */; };
+		D6C39E4316D0079A0087D216 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E4216D0079A0087D216 /* Accounts.framework */; };
+		D6C39E4516D007D50087D216 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E4416D007D40087D216 /* AdSupport.framework */; };
+		D6C39E5016D0106D0087D216 /* Exit.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4616D0106D0087D216 /* Exit.png */; };
+		D6C39E5116D0106D0087D216 /* ExitDown.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4716D0106D0087D216 /* ExitDown.png */; };
+		D6C39E5216D0106D0087D216 /* Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4816D0106D0087D216 /* Facebook.png */; };
+		D6C39E5316D0106D0087D216 /* FacebookDown.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4916D0106D0087D216 /* FacebookDown.png */; };
+		D6C39E5416D0106D0087D216 /* LoginFieldBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4A16D0106D0087D216 /* LoginFieldBG.png */; };
+		D6C39E5516D0106D0087D216 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4B16D0106D0087D216 /* Logo.png */; };
+		D6C39E5616D0106D0087D216 /* MainBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4C16D0106D0087D216 /* MainBG.png */; };
+		D6C39E5716D0106D0087D216 /* SignUp.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4D16D0106D0087D216 /* SignUp.png */; };
+		D6C39E5816D0106D0087D216 /* SignUpDown.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4E16D0106D0087D216 /* SignUpDown.png */; };
+		D6C39E5916D0106D0087D216 /* SignUpFieldBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4F16D0106D0087D216 /* SignUpFieldBG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -265,6 +292,37 @@
 		D69D216A16C0B2590062FE0C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D69D216C16C0B2AF0062FE0C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D69D216E16C0B2F50062FE0C /* words.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = words.plist; sourceTree = "<group>"; };
+		D6C39E1F16CFFF720087D216 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		D6C39E2116CFFFB20087D216 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D6C39E2316CFFFB80087D216 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D6C39E2516CFFFC50087D216 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		D6C39E2716CFFFCE0087D216 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D6C39E2916CFFFD70087D216 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D6C39E2B16CFFFED0087D216 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D6C39E2E16D001E10087D216 /* MyLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLogInViewController.h; sourceTree = "<group>"; };
+		D6C39E2F16D001E10087D216 /* MyLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLogInViewController.m; sourceTree = "<group>"; };
+		D6C39E3016D001E10087D216 /* MySignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySignUpViewController.h; sourceTree = "<group>"; };
+		D6C39E3116D001E10087D216 /* MySignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySignUpViewController.m; sourceTree = "<group>"; };
+		D6C39E3216D001E10087D216 /* SubclassConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubclassConfigViewController.h; sourceTree = "<group>"; };
+		D6C39E3316D001E10087D216 /* SubclassConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubclassConfigViewController.m; sourceTree = "<group>"; };
+		D6C39E3416D001E10087D216 /* SubclassConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubclassConfigViewController.xib; sourceTree = "<group>"; };
+		D6C39E3916D002820087D216 /* DefaultSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultSettingsViewController.h; sourceTree = "<group>"; };
+		D6C39E3A16D002820087D216 /* DefaultSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultSettingsViewController.m; sourceTree = "<group>"; };
+		D6C39E3B16D002820087D216 /* DefaultSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultSettingsViewController.xib; sourceTree = "<group>"; };
+		D6C39E3E16D0076D0087D216 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D6C39E4016D0078A0087D216 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D6C39E4216D0079A0087D216 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		D6C39E4416D007D40087D216 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		D6C39E4616D0106D0087D216 /* Exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Exit.png; path = images/Exit.png; sourceTree = "<group>"; };
+		D6C39E4716D0106D0087D216 /* ExitDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ExitDown.png; path = images/ExitDown.png; sourceTree = "<group>"; };
+		D6C39E4816D0106D0087D216 /* Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Facebook.png; path = images/Facebook.png; sourceTree = "<group>"; };
+		D6C39E4916D0106D0087D216 /* FacebookDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FacebookDown.png; path = images/FacebookDown.png; sourceTree = "<group>"; };
+		D6C39E4A16D0106D0087D216 /* LoginFieldBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginFieldBG.png; path = images/LoginFieldBG.png; sourceTree = "<group>"; };
+		D6C39E4B16D0106D0087D216 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = images/Logo.png; sourceTree = "<group>"; };
+		D6C39E4C16D0106D0087D216 /* MainBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MainBG.png; path = images/MainBG.png; sourceTree = "<group>"; };
+		D6C39E4D16D0106D0087D216 /* SignUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SignUp.png; path = images/SignUp.png; sourceTree = "<group>"; };
+		D6C39E4E16D0106D0087D216 /* SignUpDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SignUpDown.png; path = images/SignUpDown.png; sourceTree = "<group>"; };
+		D6C39E4F16D0106D0087D216 /* SignUpFieldBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SignUpFieldBG.png; path = images/SignUpFieldBG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,10 +330,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C39E4516D007D50087D216 /* AdSupport.framework in Frameworks */,
+				D6C39E4316D0079A0087D216 /* Accounts.framework in Frameworks */,
+				D6C39E4116D0078A0087D216 /* CoreLocation.framework in Frameworks */,
+				D6C39E3F16D0076D0087D216 /* libsqlite3.dylib in Frameworks */,
+				D6C39E2C16CFFFED0087D216 /* SystemConfiguration.framework in Frameworks */,
+				D6C39E2A16CFFFD70087D216 /* Security.framework in Frameworks */,
+				D6C39E2816CFFFCE0087D216 /* MobileCoreServices.framework in Frameworks */,
+				D6C39E2616CFFFC50087D216 /* libz.1.1.3.dylib in Frameworks */,
+				D6C39E2416CFFFB80087D216 /* CFNetwork.framework in Frameworks */,
+				D6C39E2216CFFFB20087D216 /* AudioToolbox.framework in Frameworks */,
 				D69D216B16C0B2590062FE0C /* QuartzCore.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				1D3623EC0D0F72F000981E51 /* CoreGraphics.framework in Frameworks */,
+				D6C39E2016CFFF720087D216 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,10 +362,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D6C39E2D16D001E10087D216 /* LoginOut */,
 				D6090C4216C9EAA40076ACAE /* iCarousel */,
 				D6090BFA16C562AC0076ACAE /* TestView */,
 				D69D216C16C0B2AF0062FE0C /* Default-568h@2x.png */,
-				D69D216A16C0B2590062FE0C /* QuartzCore.framework */,
 				D69D212316C0B1880062FE0C /* PageControl */,
 				D69D20CF16C0B1630062FE0C /* CollectionView */,
 				D0E6CCF213C780AC008F8E43 /* ReadMe.txt */,
@@ -330,6 +399,18 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6C39E4416D007D40087D216 /* AdSupport.framework */,
+				D6C39E4216D0079A0087D216 /* Accounts.framework */,
+				D6C39E4016D0078A0087D216 /* CoreLocation.framework */,
+				D6C39E3E16D0076D0087D216 /* libsqlite3.dylib */,
+				D69D216A16C0B2590062FE0C /* QuartzCore.framework */,
+				D6C39E2B16CFFFED0087D216 /* SystemConfiguration.framework */,
+				D6C39E2916CFFFD70087D216 /* Security.framework */,
+				D6C39E2716CFFFCE0087D216 /* MobileCoreServices.framework */,
+				D6C39E2516CFFFC50087D216 /* libz.1.1.3.dylib */,
+				D6C39E2316CFFFB80087D216 /* CFNetwork.framework */,
+				D6C39E2116CFFFB20087D216 /* AudioToolbox.framework */,
+				D6C39E1F16CFFF720087D216 /* Parse.framework */,
 				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -340,6 +421,16 @@
 		530FE5B7128337CE00678AD0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D6C39E4616D0106D0087D216 /* Exit.png */,
+				D6C39E4716D0106D0087D216 /* ExitDown.png */,
+				D6C39E4816D0106D0087D216 /* Facebook.png */,
+				D6C39E4916D0106D0087D216 /* FacebookDown.png */,
+				D6C39E4A16D0106D0087D216 /* LoginFieldBG.png */,
+				D6C39E4B16D0106D0087D216 /* Logo.png */,
+				D6C39E4C16D0106D0087D216 /* MainBG.png */,
+				D6C39E4D16D0106D0087D216 /* SignUp.png */,
+				D6C39E4E16D0106D0087D216 /* SignUpDown.png */,
+				D6C39E4F16D0106D0087D216 /* SignUpFieldBG.png */,
 				5331DFAA0FD5B55500F2BF21 /* left.png */,
 				5331DFAB0FD5B55500F2BF21 /* left_pressed.png */,
 				5354B6220FD08B7E000597B3 /* iPod_shuffle.png */,
@@ -569,6 +660,23 @@
 			path = SmallImages;
 			sourceTree = "<group>";
 		};
+		D6C39E2D16D001E10087D216 /* LoginOut */ = {
+			isa = PBXGroup;
+			children = (
+				D6C39E3916D002820087D216 /* DefaultSettingsViewController.h */,
+				D6C39E3A16D002820087D216 /* DefaultSettingsViewController.m */,
+				D6C39E3B16D002820087D216 /* DefaultSettingsViewController.xib */,
+				D6C39E2E16D001E10087D216 /* MyLogInViewController.h */,
+				D6C39E2F16D001E10087D216 /* MyLogInViewController.m */,
+				D6C39E3016D001E10087D216 /* MySignUpViewController.h */,
+				D6C39E3116D001E10087D216 /* MySignUpViewController.m */,
+				D6C39E3216D001E10087D216 /* SubclassConfigViewController.h */,
+				D6C39E3316D001E10087D216 /* SubclassConfigViewController.m */,
+				D6C39E3416D001E10087D216 /* SubclassConfigViewController.xib */,
+			);
+			path = LoginOut;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -701,6 +809,18 @@
 				D6090C4916C9EAF40076ACAE /* background.png in Resources */,
 				D6090C4A16C9EAF40076ACAE /* page.png in Resources */,
 				D6090C4B16C9EAF40076ACAE /* placeholder.png in Resources */,
+				D6C39E3816D001E10087D216 /* SubclassConfigViewController.xib in Resources */,
+				D6C39E3D16D002820087D216 /* DefaultSettingsViewController.xib in Resources */,
+				D6C39E5016D0106D0087D216 /* Exit.png in Resources */,
+				D6C39E5116D0106D0087D216 /* ExitDown.png in Resources */,
+				D6C39E5216D0106D0087D216 /* Facebook.png in Resources */,
+				D6C39E5316D0106D0087D216 /* FacebookDown.png in Resources */,
+				D6C39E5416D0106D0087D216 /* LoginFieldBG.png in Resources */,
+				D6C39E5516D0106D0087D216 /* Logo.png in Resources */,
+				D6C39E5616D0106D0087D216 /* MainBG.png in Resources */,
+				D6C39E5716D0106D0087D216 /* SignUp.png in Resources */,
+				D6C39E5816D0106D0087D216 /* SignUpDown.png in Resources */,
+				D6C39E5916D0106D0087D216 /* SignUpFieldBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +860,10 @@
 				D6090C0016C562AC0076ACAE /* TestTableViewController.m in Sources */,
 				D6090C4016C9EA7E0076ACAE /* GroupedWordViewController.m in Sources */,
 				D6090C4516C9EAA40076ACAE /* iCarousel.m in Sources */,
+				D6C39E3516D001E10087D216 /* MyLogInViewController.m in Sources */,
+				D6C39E3616D001E10087D216 /* MySignUpViewController.m in Sources */,
+				D6C39E3716D001E10087D216 /* SubclassConfigViewController.m in Sources */,
+				D6C39E3C16D002820087D216 /* DefaultSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +912,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -807,6 +935,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
