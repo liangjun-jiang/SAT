@@ -146,6 +146,26 @@
 		D6C39E5716D0106D0087D216 /* SignUp.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4D16D0106D0087D216 /* SignUp.png */; };
 		D6C39E5816D0106D0087D216 /* SignUpDown.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4E16D0106D0087D216 /* SignUpDown.png */; };
 		D6C39E5916D0106D0087D216 /* SignUpFieldBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E4F16D0106D0087D216 /* SignUpFieldBG.png */; };
+		D6C39E6716D0C2060087D216 /* EquivalenceClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E5C16D0C2060087D216 /* EquivalenceClass.m */; };
+		D6C39E6816D0C2060087D216 /* GameSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E5D16D0C2060087D216 /* GameSettingViewController.xib */; };
+		D6C39E6916D0C2060087D216 /* GameSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E5F16D0C2060087D216 /* GameSettingViewController.m */; };
+		D6C39E6A16D0C2060087D216 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E6116D0C2060087D216 /* GameViewController.m */; };
+		D6C39E6B16D0C2060087D216 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E6416D0C2060087D216 /* PurchaseViewController.m */; };
+		D6C39E6C16D0C2060087D216 /* RageIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E6616D0C2060087D216 /* RageIAPHelper.m */; };
+		D6C39E6F16D0C2510087D216 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E6E16D0C2510087D216 /* IAPHelper.m */; };
+		D6C39E7116D0C2720087D216 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E7016D0C2720087D216 /* StoreKit.framework */; };
+		D6C39E7A16D0C39C0087D216 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E7716D0C39C0087D216 /* GameKitHelper.m */; };
+		D6C39E7B16D0C39C0087D216 /* PlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E7916D0C39C0087D216 /* PlayerModel.m */; };
+		D6C39E8316D0C3E90087D216 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E7E16D0C3E90087D216 /* EasyTracker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D6C39E8416D0C3E90087D216 /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E7F16D0C3E90087D216 /* EasyTracker.plist */; };
+		D6C39E8516D0C3E90087D216 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E8116D0C3E90087D216 /* libGoogleAnalytics.a */; };
+		D6C39E8616D0C3E90087D216 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E8216D0C3E90087D216 /* libGoogleAnalytics_NoThumb.a */; };
+		D6C39E8816D0C4170087D216 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E8716D0C4170087D216 /* GameKit.framework */; };
+		D6C39E8B16D0C4C50087D216 /* GameViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E8916D0C4C50087D216 /* GameViewController_iPad.xib */; };
+		D6C39E8C16D0C4C50087D216 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E8A16D0C4C50087D216 /* GameViewController.xib */; };
+		D6C39E9016D0C5470087D216 /* WordLookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C39E8E16D0C5460087D216 /* WordLookupViewController.m */; };
+		D6C39E9116D0C5470087D216 /* WordLookupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C39E8F16D0C5460087D216 /* WordLookupViewController.xib */; };
+		D6C39E9316D0C5BA0087D216 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C39E9216D0C5BA0087D216 /* iAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -323,6 +343,38 @@
 		D6C39E4D16D0106D0087D216 /* SignUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SignUp.png; path = images/SignUp.png; sourceTree = "<group>"; };
 		D6C39E4E16D0106D0087D216 /* SignUpDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SignUpDown.png; path = images/SignUpDown.png; sourceTree = "<group>"; };
 		D6C39E4F16D0106D0087D216 /* SignUpFieldBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SignUpFieldBG.png; path = images/SignUpFieldBG.png; sourceTree = "<group>"; };
+		D6C39E5B16D0C2060087D216 /* EquivalenceClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquivalenceClass.h; sourceTree = "<group>"; };
+		D6C39E5C16D0C2060087D216 /* EquivalenceClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquivalenceClass.m; sourceTree = "<group>"; };
+		D6C39E5D16D0C2060087D216 /* GameSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameSettingViewController.xib; sourceTree = "<group>"; };
+		D6C39E5E16D0C2060087D216 /* GameSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSettingViewController.h; sourceTree = "<group>"; };
+		D6C39E5F16D0C2060087D216 /* GameSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSettingViewController.m; sourceTree = "<group>"; };
+		D6C39E6016D0C2060087D216 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		D6C39E6116D0C2060087D216 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		D6C39E6316D0C2060087D216 /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseViewController.h; sourceTree = "<group>"; };
+		D6C39E6416D0C2060087D216 /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
+		D6C39E6516D0C2060087D216 /* RageIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RageIAPHelper.h; sourceTree = "<group>"; };
+		D6C39E6616D0C2060087D216 /* RageIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RageIAPHelper.m; sourceTree = "<group>"; };
+		D6C39E6D16D0C2510087D216 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		D6C39E6E16D0C2510087D216 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		D6C39E7016D0C2720087D216 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D6C39E7516D0C39C0087D216 /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
+		D6C39E7616D0C39C0087D216 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
+		D6C39E7716D0C39C0087D216 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
+		D6C39E7816D0C39C0087D216 /* PlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerModel.h; sourceTree = "<group>"; };
+		D6C39E7916D0C39C0087D216 /* PlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerModel.m; sourceTree = "<group>"; };
+		D6C39E7D16D0C3E90087D216 /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTracker.h; sourceTree = "<group>"; };
+		D6C39E7E16D0C3E90087D216 /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyTracker.m; sourceTree = "<group>"; };
+		D6C39E7F16D0C3E90087D216 /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
+		D6C39E8016D0C3E90087D216 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
+		D6C39E8116D0C3E90087D216 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		D6C39E8216D0C3E90087D216 /* libGoogleAnalytics_NoThumb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_NoThumb.a; sourceTree = "<group>"; };
+		D6C39E8716D0C4170087D216 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		D6C39E8916D0C4C50087D216 /* GameViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController_iPad.xib; sourceTree = "<group>"; };
+		D6C39E8A16D0C4C50087D216 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		D6C39E8D16D0C5460087D216 /* WordLookupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLookupViewController.h; sourceTree = "<group>"; };
+		D6C39E8E16D0C5460087D216 /* WordLookupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLookupViewController.m; sourceTree = "<group>"; };
+		D6C39E8F16D0C5460087D216 /* WordLookupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordLookupViewController.xib; sourceTree = "<group>"; };
+		D6C39E9216D0C5BA0087D216 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +382,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C39E9316D0C5BA0087D216 /* iAd.framework in Frameworks */,
+				D6C39E8816D0C4170087D216 /* GameKit.framework in Frameworks */,
+				D6C39E7116D0C2720087D216 /* StoreKit.framework in Frameworks */,
 				D6C39E4516D007D50087D216 /* AdSupport.framework in Frameworks */,
 				D6C39E4316D0079A0087D216 /* Accounts.framework in Frameworks */,
 				D6C39E4116D0078A0087D216 /* CoreLocation.framework in Frameworks */,
@@ -345,6 +400,8 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				1D3623EC0D0F72F000981E51 /* CoreGraphics.framework in Frameworks */,
 				D6C39E2016CFFF720087D216 /* Parse.framework in Frameworks */,
+				D6C39E8516D0C3E90087D216 /* libGoogleAnalytics.a in Frameworks */,
+				D6C39E8616D0C3E90087D216 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +419,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D6C39E9216D0C5BA0087D216 /* iAd.framework */,
+				D6C39E8716D0C4170087D216 /* GameKit.framework */,
+				D6C39E7C16D0C3E90087D216 /* GA */,
+				D6C39E5A16D0C2060087D216 /* Game */,
+				D6C39E6216D0C2060087D216 /* inApp */,
 				D6C39E2D16D001E10087D216 /* LoginOut */,
 				D6090C4216C9EAA40076ACAE /* iCarousel */,
 				D6090BFA16C562AC0076ACAE /* TestView */,
@@ -399,6 +461,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6C39E7016D0C2720087D216 /* StoreKit.framework */,
 				D6C39E4416D007D40087D216 /* AdSupport.framework */,
 				D6C39E4216D0079A0087D216 /* Accounts.framework */,
 				D6C39E4016D0078A0087D216 /* CoreLocation.framework */,
@@ -677,6 +740,57 @@
 			path = LoginOut;
 			sourceTree = "<group>";
 		};
+		D6C39E5A16D0C2060087D216 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D6C39E8D16D0C5460087D216 /* WordLookupViewController.h */,
+				D6C39E8E16D0C5460087D216 /* WordLookupViewController.m */,
+				D6C39E8F16D0C5460087D216 /* WordLookupViewController.xib */,
+				D6C39E8916D0C4C50087D216 /* GameViewController_iPad.xib */,
+				D6C39E8A16D0C4C50087D216 /* GameViewController.xib */,
+				D6C39E7516D0C39C0087D216 /* GameConstants.h */,
+				D6C39E7616D0C39C0087D216 /* GameKitHelper.h */,
+				D6C39E7716D0C39C0087D216 /* GameKitHelper.m */,
+				D6C39E7816D0C39C0087D216 /* PlayerModel.h */,
+				D6C39E7916D0C39C0087D216 /* PlayerModel.m */,
+				D6C39E5B16D0C2060087D216 /* EquivalenceClass.h */,
+				D6C39E5C16D0C2060087D216 /* EquivalenceClass.m */,
+				D6C39E5D16D0C2060087D216 /* GameSettingViewController.xib */,
+				D6C39E5E16D0C2060087D216 /* GameSettingViewController.h */,
+				D6C39E5F16D0C2060087D216 /* GameSettingViewController.m */,
+				D6C39E6016D0C2060087D216 /* GameViewController.h */,
+				D6C39E6116D0C2060087D216 /* GameViewController.m */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		D6C39E6216D0C2060087D216 /* inApp */ = {
+			isa = PBXGroup;
+			children = (
+				D6C39E6D16D0C2510087D216 /* IAPHelper.h */,
+				D6C39E6E16D0C2510087D216 /* IAPHelper.m */,
+				D6C39E6316D0C2060087D216 /* PurchaseViewController.h */,
+				D6C39E6416D0C2060087D216 /* PurchaseViewController.m */,
+				D6C39E6516D0C2060087D216 /* RageIAPHelper.h */,
+				D6C39E6616D0C2060087D216 /* RageIAPHelper.m */,
+			);
+			path = inApp;
+			sourceTree = "<group>";
+		};
+		D6C39E7C16D0C3E90087D216 /* GA */ = {
+			isa = PBXGroup;
+			children = (
+				D6C39E7D16D0C3E90087D216 /* EasyTracker.h */,
+				D6C39E7E16D0C3E90087D216 /* EasyTracker.m */,
+				D6C39E7F16D0C3E90087D216 /* EasyTracker.plist */,
+				D6C39E8016D0C3E90087D216 /* GANTracker.h */,
+				D6C39E8116D0C3E90087D216 /* libGoogleAnalytics.a */,
+				D6C39E8216D0C3E90087D216 /* libGoogleAnalytics_NoThumb.a */,
+			);
+			name = GA;
+			path = ThirdParty/GA;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -821,6 +935,11 @@
 				D6C39E5716D0106D0087D216 /* SignUp.png in Resources */,
 				D6C39E5816D0106D0087D216 /* SignUpDown.png in Resources */,
 				D6C39E5916D0106D0087D216 /* SignUpFieldBG.png in Resources */,
+				D6C39E6816D0C2060087D216 /* GameSettingViewController.xib in Resources */,
+				D6C39E8416D0C3E90087D216 /* EasyTracker.plist in Resources */,
+				D6C39E8B16D0C4C50087D216 /* GameViewController_iPad.xib in Resources */,
+				D6C39E8C16D0C4C50087D216 /* GameViewController.xib in Resources */,
+				D6C39E9116D0C5470087D216 /* WordLookupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +983,16 @@
 				D6C39E3616D001E10087D216 /* MySignUpViewController.m in Sources */,
 				D6C39E3716D001E10087D216 /* SubclassConfigViewController.m in Sources */,
 				D6C39E3C16D002820087D216 /* DefaultSettingsViewController.m in Sources */,
+				D6C39E6716D0C2060087D216 /* EquivalenceClass.m in Sources */,
+				D6C39E6916D0C2060087D216 /* GameSettingViewController.m in Sources */,
+				D6C39E6A16D0C2060087D216 /* GameViewController.m in Sources */,
+				D6C39E6B16D0C2060087D216 /* PurchaseViewController.m in Sources */,
+				D6C39E6C16D0C2060087D216 /* RageIAPHelper.m in Sources */,
+				D6C39E6F16D0C2510087D216 /* IAPHelper.m in Sources */,
+				D6C39E7A16D0C39C0087D216 /* GameKitHelper.m in Sources */,
+				D6C39E7B16D0C39C0087D216 /* PlayerModel.m in Sources */,
+				D6C39E8316D0C3E90087D216 /* EasyTracker.m in Sources */,
+				D6C39E9016D0C5470087D216 /* WordLookupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,6 +1052,10 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/GA\"",
+				);
 				PRODUCT_NAME = SAT;
 				WRAPPER_EXTENSION = app;
 			};
@@ -944,6 +1077,10 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParty/GA\"",
+				);
 				PRODUCT_NAME = SAT;
 				WRAPPER_EXTENSION = app;
 			};
