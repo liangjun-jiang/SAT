@@ -3,43 +3,7 @@
  Abstract: Content controller used to manage the iPhone user interface for this app. 
   Version: 1.4 
   
- Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple 
- Inc. ("Apple") in consideration of your agreement to the following 
- terms, and your use, installation, modification or redistribution of 
- this Apple software constitutes acceptance of these terms.  If you do 
- not agree with these terms, please do not use, install, modify or 
- redistribute this Apple software. 
-  
- In consideration of your agreement to abide by the following terms, and 
- subject to these terms, Apple grants you a personal, non-exclusive 
- license, under Apple's copyrights in this original Apple software (the 
- "Apple Software"), to use, reproduce, modify and redistribute the Apple 
- Software, with or without modifications, in source and/or binary forms; 
- provided that if you redistribute the Apple Software in its entirety and 
- without modifications, you must retain this notice and the following 
- text and disclaimers in all such redistributions of the Apple Software. 
- Neither the name, trademarks, service marks or logos of Apple Inc. may 
- be used to endorse or promote products derived from the Apple Software 
- without specific prior written permission from Apple.  Except as 
- expressly stated in this notice, no other rights or licenses, express or 
- implied, are granted by Apple herein, including but not limited to any 
- patent rights that may be infringed by your derivative works or by other 
- works in which the Apple Software may be incorporated. 
-  
- The Apple Software is provided by Apple on an "AS IS" basis.  APPLE 
- MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION 
- THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS 
- FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND 
- OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS. 
-  
- IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL 
- OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
- INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION, 
- MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED 
- AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE), 
- STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE 
- POSSIBILITY OF SUCH DAMAGE. 
+ 
   
  Copyright (C) 2010 Apple Inc. All Rights Reserved. 
   
@@ -129,6 +93,7 @@ NSString *MarkedPage = @"markedPage";
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.scrollsToTop = NO;
     scrollView.delegate = self;
+    scrollView.backgroundColor = [UIColor clearColor];
     
     pageControl.numberOfPages = kNumberOfPages;
     
@@ -155,9 +120,6 @@ NSString *MarkedPage = @"markedPage";
     [self dismissViewControllerAnimated:YES completion:^{
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.myTabBarController.tabBar setHidden:NO];
-        
-        // We'd better tell BHCollectionViewController reload data
-        
     }];
 }
 
@@ -186,14 +148,30 @@ NSString *MarkedPage = @"markedPage";
         return;
     
     // replace the placeholder if necessary
-//    WordViewController *controller = viewControllers[page];
     TestTableViewController *controller = viewControllers[page];
     
     if ((NSNull *)controller == [NSNull null])
     {
-//        controller = [[WordViewController alloc] initWithPageNumber:page andTotal:kNumberOfPages];
+//        controller = [[TestTableViewController alloc] initWithPageNumber:page andTotal:kNumberOfPages];
+        NSDictionary *numberItem = (self.contentList)[page];
         
-        controller = [[TestTableViewController alloc] initWithPageNumber:page andTotal:kNumberOfPages];
+        int randomIndex0, randomIndex1, randomIndex2;
+        if ([self.contentList count] !=0) {
+            randomIndex0 = arc4random() % self.contentList.count;
+            randomIndex1 = arc4random() % self.contentList.count;
+            randomIndex2 = arc4random() % self.contentList.count;
+        }
+        NSDictionary *option0 = (self.contentList)[randomIndex0];
+        NSDictionary *option1 = (self.contentList)[randomIndex1];
+        NSDictionary *option2 = (self.contentList)[randomIndex2];
+        
+        NSDictionary *problem = @{@"WORD":numberItem, @"OPTIONS": @[option0, option1, option2]};
+        
+//        controller.problem = problem;
+        
+        controller = [[TestTableViewController alloc] initWithProblem:problem];
+        
+//        controller.meaningLabel.text = numberItem[MeaningKey];
         
         viewControllers[page] = controller;
     }
@@ -207,13 +185,23 @@ NSString *MarkedPage = @"markedPage";
         controller.view.frame = frame;
         [scrollView addSubview:controller.view];
         
-        NSDictionary *numberItem = (self.contentList)[page];
-        
+//        NSDictionary *numberItem = (self.contentList)[page];
+//        controller.meaningLabel.text = numberItem[MeaningKey];
+//        
+//        int randomIndex0, randomIndex1, randomIndex2;
+//        if ([self.contentList count] !=0) {
+//            randomIndex0 = arc4random() % self.contentList.count;
+//            randomIndex1 = arc4random() % self.contentList.count;
+//            randomIndex2 = arc4random() % self.contentList.count;
+//        }
+//        NSDictionary *option0 = (self.contentList)[randomIndex0];
+//        NSDictionary *option1 = (self.contentList)[randomIndex1];
+//        NSDictionary *option2 = (self.contentList)[randomIndex2];
+//        
+//        NSDictionary *problem = @{@"WORD":numberItem, @"OPTIONS": @[option0, option1, option2]};
+//                                  
+//        controller.problem = problem;
         //numberItem has key of word, type and meaning ...
-        
-//        controller.wordLabel.text = numberItem[NameKey];
-//        controller.typeLabel.text = numberItem[TypeKey];
-//        controller.meanLabel.text = numberItem[MeaningKey];
     }
 }
 

@@ -3,63 +3,25 @@
  Abstract: The main view controller of this app.
   Version: 1.3
  
- Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
- Inc. ("Apple") in consideration of your agreement to the following
- terms, and your use, installation, modification or redistribution of
- this Apple software constitutes acceptance of these terms.  If you do
- not agree with these terms, please do not use, install, modify or
- redistribute this Apple software.
- 
- In consideration of your agreement to abide by the following terms, and
- subject to these terms, Apple grants you a personal, non-exclusive
- license, under Apple's copyrights in this original Apple software (the
- "Apple Software"), to use, reproduce, modify and redistribute the Apple
- Software, with or without modifications, in source and/or binary forms;
- provided that if you redistribute the Apple Software in its entirety and
- without modifications, you must retain this notice and the following
- text and disclaimers in all such redistributions of the Apple Software.
- Neither the name, trademarks, service marks or logos of Apple Inc. may
- be used to endorse or promote products derived from the Apple Software
- without specific prior written permission from Apple.  Except as
- expressly stated in this notice, no other rights or licenses, express or
- implied, are granted by Apple herein, including but not limited to any
- patent rights that may be infringed by your derivative works or by other
- works in which the Apple Software may be incorporated.
- 
- The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
- MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
- THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
- FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
- OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
- 
- IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
- OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
- MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
- AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
- STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
- POSSIBILITY OF SUCH DAMAGE.
- 
  Copyright (C) 2010 Apple Inc. All Rights Reserved.
  
  */
 
 #import "TestTableViewController.h"
+#import "PhoneContentController.h"
+
+#define WORD_KEY @"WORD"
+#define OPTIONS @"OPTIONS"
 
 @implementation TestTableViewController
 
-@synthesize myHeaderView, myFooterView, tableArray;
+@synthesize myHeaderView;
+//, myFooterView;
+@synthesize meaningLabel;
+@synthesize problem;
+@synthesize guessedWord;
+@synthesize tableArray;
 
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithNibName:@"TestTableViewController" bundle:nil];
-    if (self) {
-        
-    }
-    
-    return self;
-}
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
@@ -72,33 +34,58 @@
     return self;
 }
 
-// load the view nib and initialize the pageNumber ivar
-- (id)initWithPageNumber:(int)page andTotal:(int)total
+
+- (id)initWithProblem:(NSDictionary *)theProblem
 {
     if (self = [super initWithNibName:@"TestTableViewController" bundle:nil])
     {
-//        pageNumber = page;
-//        totalPage = total;
+        self.problem = theProblem;
+        self.guessedWord = problem[WORD_KEY];
+        
     }
     return self;
+    
+    
 }
+
 
 - (void)viewDidLoad
 {
 	// setup our table data
-	self.tableArray = @[@"Camping", @"Water Skiing", @"Weight Lifting", @"Stamp Collecting"];
+//	self.tableArray = @[@"Camping", @"Water Skiing", @"Weight Lifting", @"Stamp Collecting"];
+    self.guessedWord = problem[WORD_KEY];
+    self.tableArray = problem[OPTIONS];
+    
+    self.tableArray = [NSMutableArray arrayWithCapacity:4];
+    [self.tableArray addObject:self.guessedWord];
+    NSArray *optionsArray = problem[OPTIONS];
+    [optionsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self.tableArray addObject:obj];
+    }];
+    
+    // we need shuffle the table array
+    NSUInteger count = 4;
+    for (NSUInteger i = 0; i < count; ++i) {
+        // Select a random element between i and end of array to swap with.
+        NSInteger nElements = count - i;
+        NSInteger n = (arc4random() % nElements) + i;
+        [self.tableArray exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+    
 	
 	// set up the table's header view based on our UIView 'myHeaderView' outlet
 	CGRect newFrame = CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, self.myHeaderView.frame.size.height);
 	self.myHeaderView.backgroundColor = [UIColor clearColor];
 	self.myHeaderView.frame = newFrame;
 	self.tableView.tableHeaderView = self.myHeaderView;	// note this will override UITableView's 'sectionHeaderHeight' property
+    
+    self.meaningLabel.text = self.guessedWord[@"meaning"];
 	
 	// set up the table's footer view based on our UIView 'myFooterView' outlet
-	newFrame = CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, self.myFooterView.frame.size.height);
-	self.myFooterView.backgroundColor = [UIColor clearColor];
-	self.myFooterView.frame = newFrame;
-	self.tableView.tableFooterView = self.myFooterView;	// note this will override UITableView's 'sectionFooterHeight' property
+//	newFrame = CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, self.myFooterView.frame.size.height);
+//	self.myFooterView.backgroundColor = [UIColor clearColor];
+//	self.myFooterView.frame = newFrame;
+//	self.tableView.tableFooterView = self.myFooterView;	// note this will override UITableView's 'sectionFooterHeight' property
 }
 
 // called after the view controller's view is released and set to nil.
@@ -108,7 +95,7 @@
 - (void)viewDidUnload
 {
 	self.myHeaderView = nil;
-	self.myFooterView = nil;
+//	self.myFooterView = nil;
 	self.tableArray = nil;
 }
 
@@ -119,12 +106,13 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	return @"Hobby Information:";
+//	return @"Select one:";
+    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [tableArray count];
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,8 +126,12 @@
 		cell.accessoryType = UITableViewCellAccessoryNone;
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
-	
-	cell.textLabel.text = tableArray[[indexPath row]];
+    NSDictionary *item = nil;
+//    if (indexPath.row !=3) {
+    item = tableArray[indexPath.row];
+    cell.textLabel.text = item[@"word"];
+//    } else
+//        cell.textLabel.text = @"right word";
 	
 	return cell;
 }
@@ -160,10 +152,14 @@
     
     // then we will change the tableview cell background color for a correct guess or a false guess
     NSUInteger row = indexPath.row;
+    NSDictionary *selectedItem = self.tableArray[row];
+    NSString *correctWord = self.guessedWord[@"word"];
+   
     
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *selectedWord = selectedCell.textLabel.text;
     
-    if (row == 2) {
+    if ([correctWord isEqualToString:selectedWord]) {
         selectedCell.backgroundColor = [UIColor greenColor];
     } else
         selectedCell.backgroundColor = [UIColor redColor];
