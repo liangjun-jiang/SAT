@@ -117,7 +117,8 @@ enum {
     contentController.hidesBottomBarWhenPushed = YES;
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController]; //
-     [self.navigationController pushViewController:contentController animated:YES];
+//     [self.navigationController pushViewController:contentController animated:YES];
+    [self.parentViewController.tabBarController presentViewController:navController animated:YES completion:nil];
 }
 
 
