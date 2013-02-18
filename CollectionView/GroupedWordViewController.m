@@ -8,9 +8,14 @@
 
 #import "GroupedWordViewController.h"
 #import "AppDelegate.h"
+#import "PhoneContentController.h"
 
-#define SCROLL_SPEED 1 //items per second, can be negative or fractional
+#define SCROLL_SPEED 0.5 //items per second, can be negative or fractional
 
+
+static NSString *NameKey = @"word";
+static NSString *TypeKey = @"type";
+static NSString *MeaningKey = @"meaning";
 
 @interface GroupedWordViewController ()
 
@@ -28,6 +33,7 @@
 @synthesize scrollTimer;
 @synthesize lastTime;
 @synthesize contentDictionary;
+@synthesize contentList;
 
 
 - (void)onDone:(id)sender
@@ -42,17 +48,34 @@
 
 #pragma mark -
 #pragma mark View lifecycle
+-(id)initWithDataSource:(NSDictionary *)dataSource
+{
+    self = [super initWithNibName:@"GroupedWordViewController"  bundle:nil];
+    if (self) {
+        self.contentDictionary = dataSource;
+        self.contentList = self.contentDictionary[MarkedGroup];
+    }
+    
+    return self;
+    
+}
+
+
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        NSLog (@"should be this called!");
-        self.items = [NSMutableArray array];
-        for (int i = 0; i < 100; i++)
-        {
-            [items addObject:[NSNumber numberWithInt:i]];
-        }
+//        self.items = [NSMutableArray array];
+//        //        self.contentList = self.contentDictionary[MarkedGroup];
+//        
+//        for (int i = 0; i < [self.contentList count]; i++)
+//        {
+//            //            NSDictionary *numberItem = (self.contentList)[i];
+//            //            [items addObject:numberItem[NameKey]];
+//            [items addObject:[NSNumber numberWithInt:i]];
+//        }
+       
         
     }
     
@@ -72,6 +95,12 @@
     
     UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonSystemItemOrganize target:self action:@selector(onBookmark:)];
     self.navigationItem.rightBarButtonItem = bookmarkButton;
+    
+     self.title = self.contentDictionary[MarkedGroupKey];
+    
+    self.contentList = self.contentDictionary[MarkedGroup];
+    
+    
     
     //configure carousel
     carousel.type = iCarouselTypeCylinder;
@@ -109,12 +138,14 @@
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //return the total number of items in the carousel
-    return [items count];
+    return [contentList count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    UILabel *label = nil;
+    UILabel *nameLabel = nil;
+    UILabel *typeLabel = nil;
+    UILabel *meaningLabel = nil;
     
     //create new view if no view is available for recycling
     if (view == nil)
@@ -122,21 +153,51 @@
         //don't do anything specific to the index within
         //this `if (view == nil) {...}` statement because the view will be
         //recycled and used with other index values later
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)];
+        
+        float padding = 5.0f;
+        float width = 200.0f;
+        float singleHeight = 30.0f;
+        
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, 200.0f)];
         ((UIImageView *)view).image = [UIImage imageNamed:@"page.png"];
         view.contentMode = UIViewContentModeCenter;
         
-        label = [[UILabel alloc] initWithFrame:view.bounds];
-        label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:50];
-        label.tag = 1;
-        [view addSubview:label];
+        CGRect labelRect = CGRectMake(padding, 2*padding, width-2*padding, singleHeight);
+        nameLabel = [[UILabel alloc] initWithFrame:labelRect];
+        nameLabel.backgroundColor = [UIColor clearColor];
+        nameLabel.textAlignment = NSTextAlignmentCenter;
+        nameLabel.font = [UIFont fontWithName:@"ChalkboardSE-Bold" size:25];
+        nameLabel.textColor = [UIColor redColor];
+        nameLabel.tag = 11;
+        [view addSubview:nameLabel];
+        
+        
+        labelRect = CGRectMake(padding, singleHeight+4*padding, width, singleHeight);
+        typeLabel = [[UILabel alloc] initWithFrame:labelRect];
+        typeLabel.backgroundColor = [UIColor clearColor];
+        typeLabel.textAlignment = NSTextAlignmentCenter;
+        typeLabel.font = [UIFont fontWithName:@"ChalkboardSE-Light" size:25];
+        typeLabel.tag = 12;
+        [view addSubview:typeLabel];
+        
+        labelRect = CGRectMake(padding, 2*singleHeight+6*padding, width-2*padding, 2*singleHeight);
+        
+        meaningLabel = [[UILabel alloc] initWithFrame:labelRect];
+        meaningLabel.backgroundColor = [UIColor clearColor];
+        meaningLabel.textAlignment = NSTextAlignmentCenter;
+        meaningLabel.font = [UIFont fontWithName:@"ChalkboardSE-Regular" size:14];
+        meaningLabel.numberOfLines = 2;
+        meaningLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        meaningLabel.tag = 13;
+        [view addSubview:meaningLabel];
+        
     }
     else
     {
         //get a reference to the label in the recycled view
-        label = (UILabel *)[view viewWithTag:1];
+        nameLabel = (UILabel *)[view viewWithTag:11];
+        typeLabel = (UILabel *)[view viewWithTag:12];
+        meaningLabel = (UILabel *)[view viewWithTag:13];
     }
     
     //set item label
@@ -144,7 +205,11 @@
     //views outside of the `if (view == nil) {...}` check otherwise
     //you'll get weird issues with carousel item content appearing
     //in the wrong place in the carousel
-    label.text = [[items objectAtIndex:index] stringValue];
+    
+    NSDictionary *numberItem = (self.contentList)[index];
+    nameLabel.text = numberItem[NameKey];
+    typeLabel.text = numberItem[TypeKey];
+    meaningLabel.text = numberItem[MeaningKey];
     
     return view;
 }

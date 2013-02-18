@@ -172,14 +172,17 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     NSString *key = self.sections[indexPath.section];
     NSArray *words = dict[key];
     
-    PhoneContentController *contentController = [[PhoneContentController alloc] initWithNibName:@"PhoneContent" bundle:nil];
+//    PhoneContentController *contentController = [[PhoneContentController alloc] initWithNibName:@"PhoneContent" bundle:nil];
     NSDictionary *contentDictionary = @{MarkedGroupKey:key, MarkedGroup:words};
-    contentController.contentDictionary = contentDictionary;
+//    contentController.contentDictionary = contentDictionary;
+    
+    GroupedWordViewController *groupedWordViewController = [[GroupedWordViewController alloc] initWithDataSource:contentDictionary];
     
 //    GroupedWordViewController *groupWordViewController = [[GroupedWordViewController alloc] initWithNibName:@"GroupedWordViewController" bundle:nil];
+//    groupWordViewController.contentDictionary = contentDictionary;
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController]; //groupWordViewController]; //
-    [self.navigationController pushViewController:contentController animated:YES];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupedWordViewController]; // contentController]; //
+//    [self.navigationController pushViewController:contentController animated:YES];
     [self presentViewController:navController animated:YES completion:nil];
 }
 

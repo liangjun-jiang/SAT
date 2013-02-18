@@ -14,4 +14,8 @@
 
 @property (nonatomic, retain) IBOutlet iCarousel *carousel;
 @property (nonatomic, strong) NSDictionary *contentDictionary;
+@property (nonatomic, strong) NSArray *contentList;
+
+-(id)initWithDataSource:(NSDictionary *)dataSource;
+
 @end
