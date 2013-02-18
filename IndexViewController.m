@@ -12,7 +12,7 @@
 //#import "SubLevelViewController.h"
 #import "SVProgressHUD.h"
 
-#define MARKED_POSITION @"MAKRED_POSITION"
+#define MARKED_POSITION @"marked_position"
 
 @interface IndexViewController ()<UISearchBarDelegate, UISearchDisplayDelegate>
 {
@@ -42,6 +42,7 @@
 @synthesize subLevel;
 
 // this is called when its tab is first tapped by the user
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -87,11 +88,12 @@
     
     // check if the user has been marked to somewhere he wants to go.
     // We scroll to there
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
-        NSIndexPath *indexPath = [defaults objectForKey:MARKED_POSITION];
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
+//        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
+//        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,6 +124,13 @@
 	// this UIViewController is about to re-appear, make sure we remove the current selection in our table view
 	NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
 	[self.tableView deselectRowAtIndexPath:tableSelection animated:NO];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
+        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
 }
 
 
@@ -192,16 +201,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if([defaults objectForKey:MARKED_POSITION] !=nil ) {
-            NSIndexPath *markedIndexPath = [defaults objectForKey:MARKED_POSITION];
-            if ([markedIndexPath isEqual:indexPath]) {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            }
-            
-        }
+        cell.accessoryType = UITableViewCellAccessoryNone;
 
-        
     }
     
     NSDictionary *vocalbulary = nil;
@@ -219,6 +220,16 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@,%@",vocalbulary[@"type"], vocalbulary[@"meaning"]];
     cell.detailTextLabel.numberOfLines  = 2;
     cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
+        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
+        NSIndexPath *markedIndexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
+        if ([markedIndexPath isEqual:indexPath]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } 
+    }
+    
     return cell;
 }
 
@@ -227,13 +238,15 @@
 #pragma mark - table Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    NSDictionary *markedPosition = nil;
     // we create a marker, and remove an existing marker (if available)
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
-        NSIndexPath *markedIndexPath = [defaults objectForKey:MARKED_POSITION];
+    if([defaults objectForKey:MARKED_POSITION] != nil ) {
+        markedPosition = [defaults objectForKey:MARKED_POSITION];
+        NSIndexPath *markedIndexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
         UITableViewCell *markedCell = [tableView cellForRowAtIndexPath:markedIndexPath];
         if (![markedIndexPath isEqual:indexPath]) {
             selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -243,11 +256,12 @@
     }
     
     // we save the new position
-    [defaults setObject:indexPath forKey:MARKED_POSITION];
+    markedPosition = @{@"section":[NSNumber numberWithInt:indexPath.section], @"row":[NSNumber numberWithInt:indexPath.row]};
+    [defaults setObject:markedPosition forKey:MARKED_POSITION];
     [defaults synchronize];
     
     // We then let the user know (or not)
-    [SVProgressHUD showWithStatus:@"Location saved!"];
+    [SVProgressHUD showSuccessWithStatus:@"Location saved!"];
     
 }
 
