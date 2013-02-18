@@ -52,6 +52,8 @@
 		D6090C4916C9EAF40076ACAE /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D6090C4616C9EAF30076ACAE /* background.png */; };
 		D6090C4A16C9EAF40076ACAE /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = D6090C4716C9EAF30076ACAE /* page.png */; };
 		D6090C4B16C9EAF40076ACAE /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D6090C4816C9EAF40076ACAE /* placeholder.png */; };
+		D68388F216D2990B00E96E57 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D68388EF16D2990B00E96E57 /* SVProgressHUD.bundle */; };
+		D68388F316D2990B00E96E57 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D68388F116D2990B00E96E57 /* SVProgressHUD.m */; };
 		D69D20FE16C0B1640062FE0C /* BHAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D20D116C0B1630062FE0C /* BHAlbum.m */; };
 		D69D20FF16C0B1640062FE0C /* BHAlbumPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D20D316C0B1630062FE0C /* BHAlbumPhotoCell.m */; };
 		D69D210016C0B1640062FE0C /* BHAlbumTitleReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D20D516C0B1630062FE0C /* BHAlbumTitleReusableView.m */; };
@@ -230,6 +232,9 @@
 		D6090C4616C9EAF30076ACAE /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		D6090C4716C9EAF30076ACAE /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
 		D6090C4816C9EAF40076ACAE /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		D68388EF16D2990B00E96E57 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		D68388F016D2990B00E96E57 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		D68388F116D2990B00E96E57 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		D69D20D016C0B1630062FE0C /* BHAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHAlbum.h; sourceTree = "<group>"; };
 		D69D20D116C0B1630062FE0C /* BHAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHAlbum.m; sourceTree = "<group>"; };
 		D69D20D216C0B1630062FE0C /* BHAlbumPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHAlbumPhotoCell.h; sourceTree = "<group>"; };
@@ -419,6 +424,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D68388EE16D2990B00E96E57 /* SVProgressHUD */,
 				D6C39E9216D0C5BA0087D216 /* iAd.framework */,
 				D6C39E8716D0C4170087D216 /* GameKit.framework */,
 				D6C39E7C16D0C3E90087D216 /* GA */,
@@ -568,6 +574,17 @@
 			);
 			name = iCarousel;
 			path = ThirdParty/iCarousel;
+			sourceTree = "<group>";
+		};
+		D68388EE16D2990B00E96E57 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				D68388EF16D2990B00E96E57 /* SVProgressHUD.bundle */,
+				D68388F016D2990B00E96E57 /* SVProgressHUD.h */,
+				D68388F116D2990B00E96E57 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = ThirdParty/SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		D69D20CF16C0B1630062FE0C /* CollectionView */ = {
@@ -940,6 +957,7 @@
 				D6C39E8B16D0C4C50087D216 /* GameViewController_iPad.xib in Resources */,
 				D6C39E8C16D0C4C50087D216 /* GameViewController.xib in Resources */,
 				D6C39E9116D0C5470087D216 /* WordLookupViewController.xib in Resources */,
+				D68388F216D2990B00E96E57 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +1011,7 @@
 				D6C39E7B16D0C39C0087D216 /* PlayerModel.m in Sources */,
 				D6C39E8316D0C3E90087D216 /* EasyTracker.m in Sources */,
 				D6C39E9016D0C5470087D216 /* WordLookupViewController.m in Sources */,
+				D68388F316D2990B00E96E57 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
