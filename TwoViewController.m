@@ -3,50 +3,13 @@
  Abstract: The view controller for page two. 
   Version: 1.1 
   
- Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple 
- Inc. ("Apple") in consideration of your agreement to the following 
- terms, and your use, installation, modification or redistribution of 
- this Apple software constitutes acceptance of these terms.  If you do 
- not agree with these terms, please do not use, install, modify or 
- redistribute this Apple software. 
-  
- In consideration of your agreement to abide by the following terms, and 
- subject to these terms, Apple grants you a personal, non-exclusive 
- license, under Apple's copyrights in this original Apple software (the 
- "Apple Software"), to use, reproduce, modify and redistribute the Apple 
- Software, with or without modifications, in source and/or binary forms; 
- provided that if you redistribute the Apple Software in its entirety and 
- without modifications, you must retain this notice and the following 
- text and disclaimers in all such redistributions of the Apple Software. 
- Neither the name, trademarks, service marks or logos of Apple Inc. may 
- be used to endorse or promote products derived from the Apple Software 
- without specific prior written permission from Apple.  Except as 
- expressly stated in this notice, no other rights or licenses, express or 
- implied, are granted by Apple herein, including but not limited to any 
- patent rights that may be infringed by your derivative works or by other 
- works in which the Apple Software may be incorporated. 
-  
- The Apple Software is provided by Apple on an "AS IS" basis.  APPLE 
- MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION 
- THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS 
- FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND 
- OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS. 
-  
- IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL 
- OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
- INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION, 
- MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED 
- AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE), 
- STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE 
- POSSIBILITY OF SUCH DAMAGE. 
-  
+   
  Copyright (C) 2012 Apple Inc. All Rights Reserved. 
   
  */
 
 #import "TwoViewController.h"
-#import "LandscapeViewController.h"
+#import "PhoneContentController.h"
 
 // table row constants for assigning cell titles
 enum {
@@ -56,13 +19,17 @@ enum {
 	kiPodshuffle
 };
 
-@interface TwoViewController () <LandscapeViewControllerDelegate>
+@interface TwoViewController () 
 	@property (nonatomic, strong) NSArray *dataArray;
+    @property (nonatomic, strong) NSMutableArray *wordsByGroup;
+    @property (nonatomic, strong) NSArray *contents;
+    @property (nonatomic, strong) NSArray *sections;
 @end
 
 @implementation TwoViewController
 
-@synthesize dataArray, landscapeViewController;
+@synthesize dataArray;
+@synthesize wordsByGroup;
 
 // this is called when its tab is first tapped by the user
 - (void)viewDidLoad
@@ -70,6 +37,21 @@ enum {
 	[super viewDidLoad];
 	
 	self.dataArray = @[@"iPod", @"iPod touch", @"iPod nano", @"iPod shuffle"];
+    
+    // Set up the word list
+    NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
+    self.contents = [NSArray arrayWithContentsOfFile:sourcePath];
+    
+    self.sections = @[@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z"];
+    
+    self.wordsByGroup = [NSMutableArray arrayWithCapacity:[self.sections count]];
+    // We should put those into dictionary
+    [self.sections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        NSArray *sectionArray = [self.contents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"word beginswith[c] %@", self.sections[idx]]];
+        [dict setObject:sectionArray forKey:self.sections[idx]];
+        [self.wordsByGroup addObject:dict];
+    }];
 }
 
 - (void)viewDidUnload
@@ -86,7 +68,7 @@ enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [self.dataArray count];
+    return [self.sections count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,51 +78,48 @@ enum {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID];
 	if (cell == nil)
 	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellID];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellID];
 		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 	}
-	
-	cell.textLabel.text = (self.dataArray)[indexPath.row];
+    
+    NSDictionary *dict = self.wordsByGroup[indexPath.row];
+    NSString *key = self.sections[indexPath.row];
+    
+    
+    cell.textLabel.text = key;
+    
+    NSUInteger markedPageNumber = 0;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:BookmarkKey] !=nil) {
+        NSDictionary *bookmarkDict = [defaults objectForKey:BookmarkKey];
+        markedPageNumber = [bookmarkDict[MarkedPage] integerValue];
+        if ([key isEqualToString:bookmarkDict[MarkedGroupKey]]) {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
+        } else
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"total: %d",[dict[key] count]];
+        
+    } else
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"total: %d",[dict[key] count]];
 	
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.landscapeViewController.delegate = self;
-    [self presentViewController:self.landscapeViewController animated:YES completion:nil];
-//	[self presentModalViewController:self.landscapeViewController animated:YES];
-	
-	switch (indexPath.row)
-	{
-		case kiPod:
-			self.landscapeViewController.imageView.image = [UIImage imageNamed:@"iPod.png"];
-			break;
-			
-		case kiPodtouch:
-			self.landscapeViewController.imageView.image = [UIImage imageNamed:@"iPod_touch.png"];
-			break;
-			
-		case kiPodnano:
-			self.landscapeViewController.imageView.image = [UIImage imageNamed:@"iPod_nano.png"];
-			break;
-			
-		case kiPodshuffle:
-			self.landscapeViewController.imageView.image = [UIImage imageNamed:@"iPod_shuffle.png"];
-			break;
-	}
-	
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *dict = self.wordsByGroup[indexPath.row];
+    NSString *key = self.sections[indexPath.row];
+    NSArray *words = dict[key];
+    
+    NSDictionary *contentDictionary = @{MarkedGroupKey:key, MarkedGroup:words};
+    PhoneContentController *contentController = [[PhoneContentController alloc] initWithNibName:@"PhoneContent" bundle:nil];
+    contentController.contentDictionary = contentDictionary;
+    contentController.hidesBottomBarWhenPushed = YES;
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController]; //
+     [self.navigationController pushViewController:contentController animated:YES];
 }
 
-#pragma mark - LandscapeViewController delegate methods
-
-- (void)dismissViewController:(UIViewController *)viewController
-{
-    if(self.modalViewController == viewController)
-        [self dismissViewControllerAnimated:YES completion:nil];
-//        [self dismissModalViewControllerAnimated:YES];
-}
 
 #pragma mark -
 #pragma mark UIViewControllerRotation

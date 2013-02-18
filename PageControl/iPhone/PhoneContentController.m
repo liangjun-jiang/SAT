@@ -86,6 +86,9 @@ NSString *MarkedPage = @"markedPage";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [appDelegate.myTabBarController.tabBar setHidden:YES];
+        
     }
     
     return self;
@@ -97,11 +100,8 @@ NSString *MarkedPage = @"markedPage";
     
     self.title = self.contentDictionary[MarkedGroupKey];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.myTabBarController.tabBar setHidden:YES];
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStyleDone target:self action:@selector(onDone:)];
-    self.navigationItem.leftBarButtonItem = doneButton;
+//    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStyleDone target:self action:@selector(onDone:)];
+//    self.navigationItem.leftBarButtonItem = doneButton;
     
     UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonSystemItemOrganize target:self action:@selector(onBookmark:)];
     self.navigationItem.rightBarButtonItem = bookmarkButton;
