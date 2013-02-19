@@ -8,6 +8,13 @@
 
 #import "MenuViewController.h"
 
+//enum {
+//	kiPod = 0,
+//	kiPodtouch,
+//	kiPodnano,
+//	kiPodshuffle
+//};
+
 @interface MenuViewController()
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) NSArray *settingsItems;

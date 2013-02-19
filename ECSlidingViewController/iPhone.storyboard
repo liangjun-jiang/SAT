@@ -84,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="216" y="-2246"/>
         </scene>
-        <!--Index View Controller - Navigation-->
+        <!--Index View Controller - Index-->
         <scene sceneID="Yq6-PB-2Ba">
             <objects>
                 <tableViewController id="IJx-7N-r3m" customClass="IndexViewController" sceneMemberID="viewController">
@@ -111,7 +111,7 @@
                             <outlet property="delegate" destination="IJx-7N-r3m" id="iIO-Wh-sRf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Navigation" id="zZr-kz-Vtd">
+                    <navigationItem key="navigationItem" title="Index" id="zZr-kz-Vtd">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="Fnr-aj-zqe">
                             <connections>
                                 <action selector="revealMenu:" destination="IJx-7N-r3m" id="WXT-fT-P3h"/>
