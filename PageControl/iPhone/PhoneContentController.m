@@ -50,8 +50,8 @@ NSString *MarkedPage = @"markedPage";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appDelegate.myTabBarController.tabBar setHidden:YES];
+//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [appDelegate.myTabBarController.tabBar setHidden:YES];
         
     }
     
@@ -118,8 +118,8 @@ NSString *MarkedPage = @"markedPage";
 - (void)onDone:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appDelegate.myTabBarController.tabBar setHidden:NO];
+//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [appDelegate.myTabBarController.tabBar setHidden:NO];
     }];
 }
 

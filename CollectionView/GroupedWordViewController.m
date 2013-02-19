@@ -39,8 +39,8 @@ static NSString *MeaningKey = @"meaning";
 - (void)onDone:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appDelegate.myTabBarController.tabBar setHidden:NO];
+//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [appDelegate.myTabBarController.tabBar setHidden:NO];
         
     }];
 }
@@ -76,10 +76,8 @@ static NSString *MeaningKey = @"meaning";
 {
     [super viewWillAppear:animated];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.myTabBarController.tabBar setHidden:YES];
-    
-   
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [appDelegate.myTabBarController.tabBar setHidden:YES];
 
 }
 
