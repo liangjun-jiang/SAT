@@ -11,7 +11,6 @@
 
 #import <iAd/iAd.h>
 #import "GameKitHelper.h"
-//#import "LJAppDelegate.h"
 @interface GameViewController ()<ADBannerViewDelegate, GameKitHelperProtocol>
 @property (nonatomic, retain) ADBannerView *bannerView;
 @property (nonatomic, retain) UIPopoverController *settingPopover;
@@ -24,7 +23,6 @@
 @synthesize wordLabel=_wordLabel;
 @synthesize guessedLettersLabel=_guessedLettersLabel;
 @synthesize remainingGuessesLabel=_remainingGuessesLabel;
-@synthesize navBar=_navBar;
 @synthesize equivalenceClass=_equivalenceClass;
 @synthesize guessesLeft=_guessesLeft;
 @synthesize numLetters=_numLetters;
@@ -35,11 +33,26 @@
 @synthesize settingPopover;
 @synthesize gameCenterButton;
 
-// init
-- (void)initDict
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self.equivalenceClass = [[EquivalenceClass alloc] init];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        // Set defaults of preferences
+        [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
+                                    [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]]];
+    }
+    
+    return self;
 }
+
+
+// init
+//- (void)initDict
+//{
+//    self.equivalenceClass = [[EquivalenceClass alloc] init];
+//}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewWillAppear:(BOOL)animated
@@ -47,28 +60,57 @@
     [super viewWillAppear:animated];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults boolForKey:@"PURCHASED"]) {
-        self.bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0.0, 44.0, self.view.frame.size.width, 44.0)];
+        self.bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)];
         self.bannerView.delegate = self;
     }
+    
+    // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
+    // You just need to set the opacity, radius, and color.
+    self.view.layer.shadowOpacity = 0.75f;
+    self.view.layer.shadowRadius = 10.0f;
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
+        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    }
+    
+//    if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
+//        self.slidingViewController.underRightViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRight"];
+//    }
+//    
+//    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+
     
 }
 
 
 - (void)viewDidLoad
 {
+     self.title = @"Hangman";
+    
+    UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(newGame)];
+    self.navigationItem.leftBarButtonItem = menuItem;
+    
+    UIBarButtonItem *settingsItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];
+    self.navigationItem.rightBarButtonItem = settingsItem;
+    
     
     
     [self newGame];
     
-    // this is actually a word lookup button
-    self.hintButton.hidden = YES;
+    
+}
+
+- (IBAction)revealMenu:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 - (IBAction)newGame
 {
         
     // update the directions
-    self.directionsLabel.text = NSLocalizedString(@"DIRECTION", @"Enter a letter to guess the word");
+    self.directionsLabel.text = NSLocalizedString(@"Enter a letter to guess the word", @"Enter a letter to guess the word");
     self.directionsLabel.textColor = [UIColor whiteColor];
     self.wordLabel.textColor = [UIColor whiteColor];
     
@@ -78,7 +120,7 @@
     self.numLetters = [[defaults objectForKey:@"numLetters"] intValue];
     self.isEvil = [defaults boolForKey:@"isEvil"];
     
-    self.navBar.topItem.title = (self.isEvil)?@"Evil Hangman":@"Hangman";
+   
     
     self.equivalenceClass = [[EquivalenceClass alloc] init];
     self.equivalenceClass.evil = self.isEvil;
@@ -109,6 +151,9 @@
     self.gameCenterButton.hidden = YES;
     self.gameCenterButton.enabled = NO;
     [self enableButtons:YES];
+    
+    // this is actually a word lookup button
+    self.hintButton.hidden = YES;
     
 }
 
@@ -314,7 +359,7 @@
 
 - (IBAction)showInfo:(id)sender
 {
-    GameSettingViewController *controller = [[GameSettingViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+    GameSettingViewController *controller = [[GameSettingViewController alloc] initWithNibName:@"GameSettingViewController" bundle:nil];
     controller.delegate = self;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     if  (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)

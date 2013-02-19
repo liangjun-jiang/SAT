@@ -13,6 +13,9 @@
 #import "EasyTracker.h"
 #import "PlayerModel.h"
 #import "WordLookupViewController.h"
+#import "ECSlidingViewController.h"
+#import "MenuViewController.h"
+#import "UnderRightViewController.h"
 
 @interface GameViewController : TrackedUIViewController <FlipsideViewControllerDelegate,   GKLeaderboardViewControllerDelegate>
 {
@@ -24,7 +27,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *wordLabel;
 @property (nonatomic, retain) IBOutlet UILabel *guessedLettersLabel;
 @property (nonatomic, retain) IBOutlet UILabel *remainingGuessesLabel;
-@property (nonatomic, retain) IBOutlet UINavigationBar *navBar;
 @property (nonatomic, retain) IBOutlet UIButton *gameCenterButton;
 
 @property (nonatomic, retain) EquivalenceClass *equivalenceClass;
@@ -43,7 +45,6 @@
 - (void)updateGuessedLettersAndCount;
 - (void)initDict;
 - (void)checkResult;
-//- (IBAction)postToGameCenter:(id)sender;
 
 // present the leaderboard as a modal window
 - (void)showLeaderboard:(NSString *)leaderboard ;
