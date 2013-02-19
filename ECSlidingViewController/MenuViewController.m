@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "TwoViewController.h"
 #import "BHCollectionViewController.h"
+#import "GameViewController.h"
 
 //enum {
 //	kiPod = 0,
@@ -27,7 +28,7 @@
 
 - (void)awakeFromNib
 {
-  self.menuItems = @[@"First", @"Second", @"Third", @"Navigation"];
+  self.menuItems = @[@"Indexed Voca", @"Test voca", @"Grouped Animation", @"Game"];
     self.settingsItems = @[@"Login"];
 }
 
@@ -108,6 +109,11 @@
             BHCollectionViewController *collectionViewController = [[BHCollectionViewController alloc] initWithNibName:@"BHCollectionViewController" bundle:nil];
             navController = [[UINavigationController alloc] initWithRootViewController:collectionViewController];
 //            newTopViewController = navController;
+            
+        } else if (indexPath.row == 3) {
+            GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+            navController = [[UINavigationController alloc] initWithRootViewController:gameViewController];
+            
             
         }
     }

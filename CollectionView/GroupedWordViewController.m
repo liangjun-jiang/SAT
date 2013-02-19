@@ -82,8 +82,8 @@ static NSString *MeaningKey = @"meaning";
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonSystemItemOrganize target:self action:@selector(onBookmark:)];
-    self.navigationItem.rightBarButtonItem = bookmarkButton;
+//    UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonSystemItemOrganize target:self action:@selector(onBookmark:)];
+//    self.navigationItem.rightBarButtonItem = bookmarkButton;
     
     // what a heck this is!
     [[self.tabBarController.view.subviews objectAtIndex:0] setFrame:CGRectMake(0, 0, 320, 480)];
