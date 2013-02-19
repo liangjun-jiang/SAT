@@ -8,10 +8,11 @@
  */
 
 #import <UIKit/UIKit.h>
-
+#import "ECSlidingViewController.h"
+#import "MenuViewController.h"
 
 @interface TwoViewController : UITableViewController
 { }
 
-
+- (IBAction)revealMenu:(id)sender;
 @end

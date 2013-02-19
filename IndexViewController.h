@@ -9,6 +9,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
+#import "MenuViewController.h"
+#import "UnderRightViewController.h"
 
 @interface IndexViewController : UITableViewController
 { }

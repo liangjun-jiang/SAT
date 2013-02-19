@@ -31,12 +31,32 @@
 @synthesize dataArray;
 @synthesize wordsByGroup;
 
+- (IBAction)revealMenu:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
+        self.slidingViewController.underLeftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    }
+    self.slidingViewController.underRightViewController = nil;
+    
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
 // this is called when its tab is first tapped by the user
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+    
+    self.title = @"Test";
 	
-//	self.dataArray = @[@"iPod", @"iPod touch", @"iPod nano", @"iPod shuffle"];
+    UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];
+    self.navigationItem.leftBarButtonItem = menuItem;
     
     // Set up the word list
     NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
@@ -113,11 +133,14 @@
     NSDictionary *contentDictionary = @{MarkedGroupKey:key, MarkedGroup:words};
     PhoneContentController *contentController = [[PhoneContentController alloc] initWithNibName:@"PhoneContent" bundle:nil];
     contentController.contentDictionary = contentDictionary;
-    contentController.hidesBottomBarWhenPushed = YES;
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController]; //
+//    [self presentViewController:contentController animated:YES completion:nil];
+    
+    [self.navigationController pushViewController:contentController animated:YES];
+    
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController]; //
 //     [self.navigationController pushViewController:contentController animated:YES];
-    [self.parentViewController.tabBarController presentViewController:navController animated:YES completion:nil];
+//    [self.parentViewController.tabBarController presentViewController:navController animated:YES completion:nil];
 }
 
 

@@ -75,19 +75,12 @@ static NSString *MeaningKey = @"meaning";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    [appDelegate.myTabBarController.tabBar setHidden:YES];
 
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStyleDone target:self action:@selector(onDone:)];
-    self.navigationItem.leftBarButtonItem = doneButton;
     
     UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonSystemItemOrganize target:self action:@selector(onBookmark:)];
     self.navigationItem.rightBarButtonItem = bookmarkButton;

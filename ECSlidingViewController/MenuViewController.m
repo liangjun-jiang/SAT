@@ -7,6 +7,8 @@
 //
 
 #import "MenuViewController.h"
+#import "TwoViewController.h"
+#import "BHCollectionViewController.h"
 
 //enum {
 //	kiPod = 0,
@@ -77,7 +79,7 @@
     NSString *identifier = nil;
     UIViewController *newTopViewController = nil;
     
-
+    UINavigationController *navController = nil;
     
     if (indexPath.section == 0) {
         switch (indexPath.row) {
@@ -97,10 +99,22 @@
                 break;
         }
         
-        
-        newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+        if (indexPath.row == 1) {
+            TwoViewController *groupedViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+            navController = [[UINavigationController alloc] initWithRootViewController:groupedViewController];
+//            newTopViewController = navController;
+
+        } else if (indexPath.row == 2) {
+            BHCollectionViewController *collectionViewController = [[BHCollectionViewController alloc] initWithNibName:@"BHCollectionViewController" bundle:nil];
+            navController = [[UINavigationController alloc] initWithRootViewController:collectionViewController];
+//            newTopViewController = navController;
+            
+        }
     }
     
+    if (navController != nil) {
+        newTopViewController = navController;
+    }
   
   [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
     CGRect frame = self.slidingViewController.topViewController.view.frame;

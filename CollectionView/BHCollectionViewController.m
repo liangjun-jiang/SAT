@@ -174,14 +174,10 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     
     NSDictionary *contentDictionary = @{MarkedGroupKey:key, MarkedGroup:words};
     GroupedWordViewController *groupedWordViewController = [[GroupedWordViewController alloc] initWithDataSource:contentDictionary];
-    groupedWordViewController.hidesBottomBarWhenPushed = YES;
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupedWordViewController];
+    [self.navigationController pushViewController:groupedWordViewController animated:YES];
     
-    self.tabBarController.modalPresentationStyle = UIModalPresentationPageSheet;
-//    [self.tabBarController presentViewController:groupedWordViewController animated:YES completion:nil];
-    
-    [self.parentViewController.tabBarController presentViewController:navController animated:YES completion:nil];
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupedWordViewController];
     
 //    [self presentViewController:navController animated:YES completion:nil];
 }
