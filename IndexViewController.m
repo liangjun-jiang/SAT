@@ -9,7 +9,6 @@
  */
 
 #import "IndexViewController.h"
-//#import "SubLevelViewController.h"
 #import "SVProgressHUD.h"
 
 #define MARKED_POSITION @"marked_position"
@@ -39,7 +38,13 @@
 @implementation IndexViewController
 @synthesize filteredListContent, savedScopeButtonIndex, searchWasActive, savedSearchTerm;
 @synthesize searchBar, searchDisplayController;
-@synthesize subLevel;
+
+
+- (IBAction)revealMenu:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
 
 // this is called when its tab is first tapped by the user
 

@@ -67,9 +67,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSString *identifier = [NSString stringWithFormat:@"%@Top", (self.menuItems)[indexPath.row]];
+    NSString *identifier = nil;
+    UIViewController *newTopViewController = nil;
+    
 
-  UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+                identifier = @"NavigationTop";
+                break;
+            case 1:
+                identifier = @"Grouped";
+                break;
+            case 2:
+                identifier = @"Test";
+                break;
+            case 3:
+                identifier = @"Game";
+                break;
+            default:
+                break;
+        }
+        
+        
+        newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    }
+    
   
   [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
     CGRect frame = self.slidingViewController.topViewController.view.frame;
