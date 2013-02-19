@@ -10,6 +10,7 @@
 
 @interface MenuViewController()
 @property (nonatomic, strong) NSArray *menuItems;
+@property (nonatomic, strong) NSArray *settingsItems;
 @end
 
 @implementation MenuViewController
@@ -18,6 +19,7 @@
 - (void)awakeFromNib
 {
   self.menuItems = @[@"First", @"Second", @"Third", @"Navigation"];
+    self.settingsItems = @[@"Login"];
 }
 
 - (void)viewDidLoad
@@ -28,9 +30,23 @@
   self.slidingViewController.underLeftWidthLayout = ECFullWidth;
 }
 
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    return 2;
+}
+
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return (section == 0)? @"Tasks":@"Settings";
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-  return self.menuItems.count;
+    return  (sectionIndex == 0)? self.menuItems.count: self.settingsItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -40,8 +56,11 @@
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
   }
-  
-  cell.textLabel.text = (self.menuItems)[indexPath.row];
+    if (indexPath.section == 0) {
+         cell.textLabel.text = (self.menuItems)[indexPath.row];
+    } else
+        cell.textLabel.text = @"Logout";
+ 
   
   return cell;
 }
