@@ -191,8 +191,6 @@
     
 }
 
-
-
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -221,14 +219,27 @@
     cell.detailTextLabel.numberOfLines  = 2;
     cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
-        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
-        NSIndexPath *markedIndexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
-        if ([markedIndexPath isEqual:indexPath]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        } 
-    }
+    // todo: it doesn't work
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
+//        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
+//        NSIndexPath *markedIndexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
+//        
+//        // I can't compare in this way
+//        if ([markedIndexPath isEqual:indexPath]) {
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }
+//        NSUInteger markedSection = [markedPosition[@"section"] intValue];
+//        NSUInteger markedRow = [markedPosition[@"row"] intValue];
+//        
+//        NSArray *sectionArray = [_contents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"word beginswith[c] %@", _sections[markedSection]]];
+//        NSDictionary * markedVocalbulary = sectionArray[markedRow];
+//        
+//        if ([markedVocalbulary isEqualToDictionary:vocalbulary]) {
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }
+        
+//    }
     
     return cell;
 }
@@ -241,19 +252,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     NSDictionary *markedPosition = nil;
+    //TODO: IT DOESN'T WORK
     // we create a marker, and remove an existing marker (if available)
-    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+//    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:MARKED_POSITION] != nil ) {
-        markedPosition = [defaults objectForKey:MARKED_POSITION];
-        NSIndexPath *markedIndexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
-        UITableViewCell *markedCell = [tableView cellForRowAtIndexPath:markedIndexPath];
-        if (![markedIndexPath isEqual:indexPath]) {
-            selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            markedCell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        
-    }
+//    if([defaults objectForKey:MARKED_POSITION] != nil ) {
+//        markedPosition = [defaults objectForKey:MARKED_POSITION];
+//        NSIndexPath *markedIndexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
+//        UITableViewCell *markedCell = [tableView cellForRowAtIndexPath:markedIndexPath];
+//        if (![markedIndexPath isEqual:indexPath]) {
+//            selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+//            markedCell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+//        
+//    }
     
     // we save the new position
     markedPosition = @{@"section":[NSNumber numberWithInt:indexPath.section], @"row":[NSNumber numberWithInt:indexPath.row]};
