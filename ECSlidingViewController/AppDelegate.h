@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (void)displayLogin;
+- (void)logOutButtonTapAction:(id)sender;
 
 @end

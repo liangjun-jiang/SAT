@@ -9,6 +9,7 @@
 #import "GroupedWordViewController.h"
 #import "AppDelegate.h"
 #import "PhoneContentController.h"
+#import "SVProgressHUD.h"
 
 #define SCROLL_SPEED 0.5 //items per second, can be negative or fractional
 
@@ -35,15 +36,6 @@ static NSString *MeaningKey = @"meaning";
 @synthesize contentDictionary;
 @synthesize contentList;
 
-
-- (void)onDone:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//        [appDelegate.myTabBarController.tabBar setHidden:NO];
-        
-    }];
-}
 
 
 #pragma mark -
@@ -81,12 +73,6 @@ static NSString *MeaningKey = @"meaning";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonSystemItemOrganize target:self action:@selector(onBookmark:)];
-//    self.navigationItem.rightBarButtonItem = bookmarkButton;
-    
-    // what a heck this is!
-    [[self.tabBarController.view.subviews objectAtIndex:0] setFrame:CGRectMake(0, 0, 320, 480)];
     
     self.title = self.contentDictionary[MarkedGroupKey];
     
@@ -213,6 +199,12 @@ static NSString *MeaningKey = @"meaning";
         default:
             return value;
     }
+}
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+{
+    [SVProgressHUD showSuccessWithStatus:@"Location Saved"];
+    
 }
 
 #pragma mark -
