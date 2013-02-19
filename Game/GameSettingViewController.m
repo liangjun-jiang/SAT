@@ -38,6 +38,17 @@ static int MAX_NUM_LETTERS = 26;
 }
 
 #pragma mark - View lifecycle
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithNibName:@"GameSettingViewController" bundle:nil];
+    if (self) {
+        
+    }
+    
+    return self;
+}
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -52,7 +63,7 @@ static int MAX_NUM_LETTERS = 26;
 {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"HANGMANSETTINGS", @"Settings");
+    self.title = NSLocalizedString(@"Hangman", @"Hangman");
     
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
     self.navigationItem.leftBarButtonItem = doneItem;

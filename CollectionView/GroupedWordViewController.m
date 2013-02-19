@@ -66,29 +66,27 @@ static NSString *MeaningKey = @"meaning";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        self.items = [NSMutableArray array];
-//        //        self.contentList = self.contentDictionary[MarkedGroup];
-//        
-//        for (int i = 0; i < [self.contentList count]; i++)
-//        {
-//            //            NSDictionary *numberItem = (self.contentList)[i];
-//            //            [items addObject:numberItem[NameKey]];
-//            [items addObject:[NSNumber numberWithInt:i]];
-//        }
-       
         
     }
     
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.myTabBarController.tabBar setHidden:YES];
+    
+   
+
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.myTabBarController.tabBar setHidden:YES];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStyleDone target:self action:@selector(onDone:)];
     self.navigationItem.leftBarButtonItem = doneButton;
@@ -96,11 +94,12 @@ static NSString *MeaningKey = @"meaning";
     UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonSystemItemOrganize target:self action:@selector(onBookmark:)];
     self.navigationItem.rightBarButtonItem = bookmarkButton;
     
-     self.title = self.contentDictionary[MarkedGroupKey];
+    // what a heck this is!
+    [[self.tabBarController.view.subviews objectAtIndex:0] setFrame:CGRectMake(0, 0, 320, 480)];
+    
+    self.title = self.contentDictionary[MarkedGroupKey];
     
     self.contentList = self.contentDictionary[MarkedGroup];
-    
-    
     
     //configure carousel
     carousel.type = iCarouselTypeCylinder;

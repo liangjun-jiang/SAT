@@ -12,12 +12,12 @@
 #import "PhoneContentController.h"
 
 // table row constants for assigning cell titles
-enum {
-	kiPod = 0,
-	kiPodtouch,
-	kiPodnano,
-	kiPodshuffle
-};
+//enum {
+//	kiPod = 0,
+//	kiPodtouch,
+//	kiPodnano,
+//	kiPodshuffle
+//};
 
 @interface TwoViewController () 
 	@property (nonatomic, strong) NSArray *dataArray;
@@ -36,7 +36,7 @@ enum {
 {
 	[super viewDidLoad];
 	
-	self.dataArray = @[@"iPod", @"iPod touch", @"iPod nano", @"iPod shuffle"];
+//	self.dataArray = @[@"iPod", @"iPod touch", @"iPod nano", @"iPod shuffle"];
     
     // Set up the word list
     NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
@@ -59,7 +59,6 @@ enum {
 	[super viewDidUnload];
 	
 	self.dataArray = nil;
-	self.landscapeViewController = nil;
 }
 
 

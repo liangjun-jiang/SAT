@@ -22,6 +22,17 @@
 @synthesize guessedWord;
 @synthesize tableArray;
 
+//- (id)initWithCoder:(NSCoder *)aDecoder
+//{
+//    self = [super initWithCoder:aDecoder];
+//    if (self) {
+//        
+//    }
+//    
+//    return self;
+//    
+//}
+
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
