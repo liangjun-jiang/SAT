@@ -97,7 +97,7 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID];
 	if (cell == nil)
 	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellID];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kCellID];
 		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 	}
     
@@ -134,13 +134,8 @@
     PhoneContentController *contentController = [[PhoneContentController alloc] initWithNibName:@"PhoneContent" bundle:nil];
     contentController.contentDictionary = contentDictionary;
     
-//    [self presentViewController:contentController animated:YES completion:nil];
-    
     [self.navigationController pushViewController:contentController animated:YES];
     
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:contentController]; //
-//     [self.navigationController pushViewController:contentController animated:YES];
-//    [self.parentViewController.tabBarController presentViewController:navController animated:YES completion:nil];
 }
 
 

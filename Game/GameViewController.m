@@ -88,11 +88,12 @@
 {
      self.title = @"Hangman";
     
-    UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(newGame)];
-    self.navigationItem.leftBarButtonItem = menuItem;
+    UIBarButtonItem *settingsItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(newGame)];
+   self.navigationItem.rightBarButtonItem = settingsItem;
     
-    UIBarButtonItem *settingsItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];
-    self.navigationItem.rightBarButtonItem = settingsItem;
+    UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];
+     self.navigationItem.leftBarButtonItem = menuItem;
+    
     
     
     

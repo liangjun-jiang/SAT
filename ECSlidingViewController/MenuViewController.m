@@ -28,7 +28,7 @@
 
 - (void)awakeFromNib
 {
-  self.menuItems = @[@"Indexed Voca", @"Test voca", @"Grouped Animation", @"Game"];
+  self.menuItems = @[@"Learning Mode", @"Autoplay Mode", @"Test Mode",  @"Game Mode"];
     self.settingsItems = @[@"Login"];
 }
 
@@ -83,32 +83,13 @@
     UINavigationController *navController = nil;
     
     if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 0:
-                identifier = @"NavigationTop";
-                break;
-            case 1:
-                identifier = @"Grouped";
-                break;
-            case 2:
-                identifier = @"Test";
-                break;
-            case 3:
-                identifier = @"Game";
-                break;
-            default:
-                break;
-        }
-        
-        if (indexPath.row == 1) {
+        if (indexPath.row == 2) {
             TwoViewController *groupedViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
             navController = [[UINavigationController alloc] initWithRootViewController:groupedViewController];
-//            newTopViewController = navController;
 
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 1) {
             BHCollectionViewController *collectionViewController = [[BHCollectionViewController alloc] initWithNibName:@"BHCollectionViewController" bundle:nil];
             navController = [[UINavigationController alloc] initWithRootViewController:collectionViewController];
-//            newTopViewController = navController;
             
         } else if (indexPath.row == 3) {
             GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
