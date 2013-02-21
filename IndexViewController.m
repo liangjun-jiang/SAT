@@ -273,6 +273,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    
+    
+    
     NSDictionary *markedPosition = nil;
     //TODO: IT DOESN'T WORK
     // we create a marker, and remove an existing marker (if available)
