@@ -38,6 +38,9 @@
     self.slidingViewController.underRightViewController = nil;
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    // reload in case new location saved
+    [self.tableView reloadData];
 }
 
 // this is called when its tab is first tapped by the user
@@ -101,7 +104,8 @@
     
     NSUInteger markedPageNumber = 0;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *bookmarkDict = [defaults objectForKey:@"tested"];
+    NSData *data = [defaults objectForKey:@"tested"];
+    NSMutableDictionary *bookmarkDict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     markedPageNumber = [bookmarkDict[key] integerValue];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
 

@@ -37,8 +37,21 @@
     // this is important. we will use this again & again
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     // Set defaults of preferences
-    [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
-                                [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]]];
+    if ([defaults objectForKey:@"indexed"] == nil || [defaults objectForKey:@"tested"] == nil || [defaults objectForKey:@"grouped"]) {
+        NSMutableDictionary *indexed = [NSMutableDictionary dictionaryWithCapacity:26];
+        NSMutableDictionary *grouped = [NSMutableDictionary dictionaryWithCapacity:26];
+        NSMutableDictionary *tested = [NSMutableDictionary dictionaryWithCapacity:26];
+        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:indexed];
+        [defaults setObject:data forKey:@"indexed"];
+        
+        data = [NSKeyedArchiver archivedDataWithRootObject:grouped];
+        [defaults setObject:data forKey:@"grouped"];
+        
+        data = [NSKeyedArchiver archivedDataWithRootObject:indexed];
+        [defaults setObject:data forKey:@"tested"];
+    }
+    
     
   return YES;
 }

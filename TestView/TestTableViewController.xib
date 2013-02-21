@@ -77,19 +77,19 @@
 							<string key="name">ChalkboardSE-Regular</string>
 							<string key="family">Chalkboard SE</string>
 							<int key="traits">0</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">17</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">ChalkboardSE-Regular</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">17</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<double key="preferredMaxLayoutWidth">299</double>
 					</object>
-					<object class="IBUILabel" id="448282139">
+					<object class="IBUILabel" id="593617745">
 						<reference key="NSNextResponder" ref="485114202"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{251, 3}, {64, 21}}</string>
+						<string key="NSFrame">{{181, 3}, {134, 21}}</string>
 						<reference key="NSSuperview" ref="485114202"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -104,7 +104,7 @@
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
-						<int key="IBUITextAlignment">1</int>
+						<int key="IBUITextAlignment">2</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
 							<double key="pointSize">17</double>
@@ -4677,7 +4677,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">countLabel</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="448282139"/>
+						<reference key="destination" ref="593617745"/>
 					</object>
 					<int key="connectionID">105</int>
 				</object>
@@ -4741,7 +4741,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<array class="NSMutableArray" key="children">
 							<reference ref="449055608"/>
 							<reference ref="928368346"/>
-							<reference ref="448282139"/>
+							<reference ref="593617745"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">HeaderView</string>
@@ -4783,7 +4783,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">104</int>
-						<reference key="object" ref="448282139"/>
+						<reference key="object" ref="593617745"/>
 						<reference key="parent" ref="485114202"/>
 					</object>
 				</array>

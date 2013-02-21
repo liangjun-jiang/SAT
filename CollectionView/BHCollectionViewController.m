@@ -172,11 +172,19 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     NSDictionary *dict = self.wordsByGroup[indexPath.section];
     NSString *key = self.sections[indexPath.section];
     
+//    NSUInteger markedPageNumber = 0;
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSDictionary *bookmarkDict = [defaults objectForKey:@"grouped"];
+//    markedPageNumber = [bookmarkDict[key] integerValue];
+//    titleView.titleLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
+    
     NSUInteger markedPageNumber = 0;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *bookmarkDict = [defaults objectForKey:@"grouped"];
+    NSData *data = [defaults objectForKey:@"grouped"];
+    NSMutableDictionary *bookmarkDict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     markedPageNumber = [bookmarkDict[key] integerValue];
     titleView.titleLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
+    
     return titleView;
 }
 

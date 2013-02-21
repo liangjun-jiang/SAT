@@ -93,8 +93,12 @@ NSString *MarkedPage = @"markedPage";
     pageControl.numberOfPages = kNumberOfPages;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *markedPosition = [defaults objectForKey:@"tested"];
-    NSUInteger savedPageNumber = markedPosition[self.contentDictionary[MarkedGroupKey]];
+    NSData *data = [defaults objectForKey:@"tested"];
+    
+    NSMutableDictionary *testedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    //
+    NSString *key = self.contentDictionary[MarkedGroupKey];
+    NSUInteger savedPageNumber = [testedDictionary[self.contentDictionary[MarkedGroupKey]] integerValue];
     if (savedPageNumber > 1) {
         pageControl.currentPage = savedPageNumber;
         [self changePage:nil];
@@ -113,14 +117,23 @@ NSString *MarkedPage = @"markedPage";
 - (void)onBookmark:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *markedPosition = [defaults objectForKey:@"tested"];
+    NSData *data = [defaults objectForKey:@"tested"];
     
+    NSMutableDictionary *testedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    //
     NSString *key = self.contentDictionary[MarkedGroupKey];
-    [defaults setObject:[NSNumber numberWithInt:index] forKey:key];
+    [testedDictionary setObject:[NSNumber numberWithInt:self.pageControl.currentPage] forKey:key];
+    
+    // now we take steps back
+    data = [NSKeyedArchiver archivedDataWithRootObject:testedDictionary];
+    [defaults setObject:data forKey:@"tested"];
+    
     [defaults synchronize];
     
     NSString *message = [NSString stringWithFormat:@"%d of %@ saved", self.pageControl.currentPage, key.capitalizedString];
     [SVProgressHUD showSuccessWithStatus:message];
+    
+//    NSLog(@"",defaults)
     
 }
 

@@ -217,11 +217,19 @@ static NSString *MeaningKey = @"meaning";
 {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *markedPosition = [defaults objectForKey:@"grouped"];
+    NSData *data = [defaults objectForKey:@"grouped"];
     
+    NSMutableDictionary *testedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    //
     NSString *key = self.contentDictionary[MarkedGroupKey];
-    [defaults setObject:[NSNumber numberWithInt:index] forKey:key];
+    [testedDictionary setObject:[NSNumber numberWithInt:index] forKey:key];
+    
+    // now we take steps back
+    data = [NSKeyedArchiver archivedDataWithRootObject:testedDictionary];
+    [defaults setObject:data forKey:@"grouped"];
+    
     [defaults synchronize];
+    
     
     NSString *message = [NSString stringWithFormat:@"%d of %@ saved", index, key.capitalizedString];
     

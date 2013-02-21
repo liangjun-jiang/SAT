@@ -62,7 +62,7 @@
     totalCount = [pageInfo[@"COUNT"] integerValue];
     
     // total count
-    self.countLabel.text = [NSString stringWithFormat:@"%d of %d", page + 1, totalCount];
+    self.countLabel.text = [NSString stringWithFormat:@"%d of %d", page, totalCount];
     
     self.tableArray = [NSMutableArray arrayWithCapacity:4];
     [self.tableArray addObject:self.guessedWord];
@@ -113,8 +113,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-//	return @"Select one:";
-    return nil;
+	return @"Choose the correct word:";
+//    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
