@@ -28,20 +28,12 @@
   [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
   self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
     
-//    self.title = @"Summary";
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSData *data = [defaults objectForKey:@"tested"];
-//    tested = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//    
-//    data = [defaults objectForKey:@"grouped"];
-//    grouped = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"always called ?!");
+//    NSLog(@"always called ?!");
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:@"tested"];

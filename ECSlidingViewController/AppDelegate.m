@@ -30,6 +30,10 @@
 //    return (gcClass && osVersionSupported);
 //}
 
++ (AppDelegate *)appDelegate{		// Static accessor
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -53,6 +57,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     // Set defaults of preferences
     if ([defaults objectForKey:@"tested"] == nil || [defaults objectForKey:@"grouped"]) {
+        NSLog(@"always inited?!");
 //        NSMutableDictionary *indexed = [NSMutableDictionary dictionaryWithCapacity:26];
         NSMutableDictionary *grouped = [NSMutableDictionary dictionaryWithCapacity:26];
         NSMutableDictionary *tested = [NSMutableDictionary dictionaryWithCapacity:26];
@@ -126,11 +131,10 @@
         [signUpViewController setFields:PFSignUpFieldsDefault | PFSignUpFieldsAdditional];
         [logInViewController setSignUpController:signUpViewController];
         
-        
         // Present the log in view controller
-//        [self.myTabBarController presentViewController:logInViewController animated:NO completion:nil];
+        self.window.rootViewController = logInViewController;
+        [self.window makeKeyAndVisible];
         
-        //        [self presentViewController:logInViewController animated:YES completion:NULL];
     } else
         NSLog(@"user logged in");
     
@@ -153,6 +157,8 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
 //    [self.myTabBarController dismissViewControllerAnimated:NO completion:nil];
+    self.window.rootViewController = [self rootViewController];
+    [self.window makeKeyAndVisible];
 }
 
 // Sent to the delegate when the log in attempt fails.
@@ -163,7 +169,8 @@
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
 //    [self.myTabBarController dismissViewControllerAnimated:YES completion:nil];
-    
+    self.window.rootViewController = [self rootViewController];
+    [self.window makeKeyAndVisible];
 }
 
 
@@ -194,6 +201,8 @@
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
 //    [self.myTabBarController dismissViewControllerAnimated:YES completion:nil];
     //    [self dismissViewControllerAnimated:YES completion:NULL];
+    self.window.rootViewController = [self rootViewController];
+    [self.window makeKeyAndVisible];
 }
 
 // Sent to the delegate when the sign up attempt fails.
@@ -204,6 +213,7 @@
 // Sent to the delegate when the sign up screen is dismissed.
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
     NSLog(@"User dismissed the signUpViewController");
+    self.window.rootViewController = [self rootViewController];
 }
 
 
@@ -213,6 +223,21 @@
     [PFUser logOut];
 //    [self.myTabBarController dismissViewControllerAnimated:NO completion:nil];
     [self displayLogin];
+}
+
+#pragma mark - rootviewController
+-(UIViewController *)rootViewController {
+    UIStoryboard *storyboard;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        storyboard = [UIStoryboard storyboardWithName:@"iPad" bundle:nil];
+    }
+    
+    return [storyboard instantiateInitialViewController];
+    
+    //   return [storyboard instantiateViewControllerWithIdentifier:@"FirstTop"];
 }
 
 @end

@@ -22,7 +22,7 @@
 //
 //// isGameCenterAuthenticationComplete is set after authentication, and authenticateWithCompletionHandler's completionHandler block has been run. It is unset when the application is backgrounded.
 //@property (readwrite, getter=isGameCenterAuthenticationComplete) BOOL gameCenterAuthenticationComplete;
-
++ (AppDelegate *)appDelegate;
 - (void)displayLogin;
 - (void)logOutButtonTapAction:(id)sender;
 

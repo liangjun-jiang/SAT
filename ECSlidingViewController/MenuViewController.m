@@ -10,7 +10,8 @@
 #import "TwoViewController.h"
 #import "BHCollectionViewController.h"
 #import "GameViewController.h"
-
+#import "AppDelegate.h"
+#import "AboutViewController.h"
 typedef enum{
 	learing = 0,
 	autoplay,
@@ -29,7 +30,7 @@ typedef enum{
 - (void)awakeFromNib
 {
   self.menuItems = @[@"Learning Mode", @"Autoplay Mode", @"Test Mode",  @"Game Mode"];
-    self.settingsItems = @[@"Login"];
+    self.settingsItems = @[@"About", @"Privacy Policy"];
 }
 
 - (void)viewDidLoad
@@ -144,6 +145,31 @@ typedef enum{
         }
         
         
+    } else if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                AboutViewController *aboutViewController = [[AboutViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                navController = [[UINavigationController alloc] initWithRootViewController:aboutViewController];
+                break;
+            }
+            case 1:
+                [[[UIAlertView alloc] initWithTitle:@"Privacy Policy" message:@"We don't collect any user information." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+                break;
+            default:
+                break;
+        }
+        
+    } else  {
+        switch (indexPath.row) {
+            case 0:
+                [[AppDelegate appDelegate] logOutButtonTapAction:nil];
+                break;
+                
+            default:
+                break;
+        }
+        
     }
     
     if (identifier != nil) {
@@ -152,13 +178,15 @@ typedef enum{
     } else if (navController != nil) {
         newTopViewController = navController;
     }
-  
-  [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
-    CGRect frame = self.slidingViewController.topViewController.view.frame;
-    self.slidingViewController.topViewController = newTopViewController;
-    self.slidingViewController.topViewController.view.frame = frame;
-    [self.slidingViewController resetTopView];
-  }];
+    if (identifier != nil || navController != nil) {
+        [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+            CGRect frame = self.slidingViewController.topViewController.view.frame;
+            self.slidingViewController.topViewController = newTopViewController;
+            self.slidingViewController.topViewController.view.frame = frame;
+            [self.slidingViewController resetTopView];
+        }];
+    }
+
 }
 
 @end

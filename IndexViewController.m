@@ -10,6 +10,7 @@
 
 #import "IndexViewController.h"
 #import "SVProgressHUD.h"
+#import "SSTheme.h"
 
 
 @interface IndexViewController ()<UISearchBarDelegate, UISearchDisplayDelegate>
@@ -58,6 +59,7 @@
     self.tableView.tableHeaderView = self.searchBar;
     
     // The default is hidding
+//    [SSThemeManager customizeTableView:self.tableView];
     
     [self.tableView setContentOffset:CGPointMake(0, 44)];
     
