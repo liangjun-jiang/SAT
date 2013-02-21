@@ -174,7 +174,7 @@
 #pragma mark - loadNext
 - (void)loadNextPage
 {
-    if (page < totalCount) {
+    if (page  < totalCount - 1) {
         [delegate testTableViewNeedsToMove:page + 1];
     }
     

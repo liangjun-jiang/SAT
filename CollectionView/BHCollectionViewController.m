@@ -152,8 +152,9 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     BHAlbumPhotoCell *photoCell =
         [collectionView dequeueReusableCellWithReuseIdentifier:PhotoCellIdentifier
                                                   forIndexPath:indexPath];
-
-    photoCell.imageView.image = [UIImage imageNamed:@"a.png"];
+    NSString *imageName = [NSString stringWithFormat:@"%@.png", self.sections[indexPath.section]];
+    
+    photoCell.imageView.image = [UIImage imageNamed:imageName];
 
     return photoCell;
 }
@@ -198,10 +199,7 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     GroupedWordViewController *groupedWordViewController = [[GroupedWordViewController alloc] initWithDataSource:contentDictionary];
     
     [self.navigationController pushViewController:groupedWordViewController animated:YES];
-    
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:groupedWordViewController];
-    
-//    [self presentViewController:navController animated:YES completion:nil];
+
 }
 
 @end
