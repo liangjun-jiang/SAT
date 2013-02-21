@@ -72,6 +72,8 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
 {
     [super viewDidLoad];
     
+    self.title = @"AutoPlay Mode";
+    
     UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];
     self.navigationItem.leftBarButtonItem = menuItem;
     

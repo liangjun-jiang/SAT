@@ -48,12 +48,6 @@
 }
 
 
-// init
-//- (void)initDict
-//{
-//    self.equivalenceClass = [[EquivalenceClass alloc] init];
-//}
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -93,9 +87,6 @@
     
     UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];
      self.navigationItem.leftBarButtonItem = menuItem;
-    
-    
-    
     
     [self newGame];
     
@@ -255,11 +246,11 @@
     }
     
     self.guessedLettersLabel.text = [NSString stringWithFormat:@"%@: %@",
-                                     NSLocalizedString(@"LETTERS_GUESSED", @"Letters guessed"),
+                                     NSLocalizedString(@"Letters guessed", @"Letters guessed"),
                                      guessedString];
     
     self.remainingGuessesLabel.text = [NSString stringWithFormat:@"%@: %i",
-                                       NSLocalizedString(@"GUESSES_LEFT", @"Number of guesses left"),
+                                       NSLocalizedString(@"Number of guesses left", @"Number of guesses left"),
                                        self.guessesLeft];
     
 }
@@ -313,7 +304,7 @@
 - (void)lose
 {
     // update the directions
-    self.directionsLabel.text = NSLocalizedString(@"LOSE", @"The correct word is");
+    self.directionsLabel.text = NSLocalizedString(@"The correct word is", @"The correct word is");
     
     // update the word
     if (self.isEvil) {

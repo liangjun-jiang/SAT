@@ -32,6 +32,8 @@
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
+    [self displayLogin];
+    
   return YES;
 }
 

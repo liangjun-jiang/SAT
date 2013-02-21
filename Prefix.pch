@@ -3,3 +3,5 @@
     #import <UIKit/UIKit.h>
     #import <Parse/Parse.h>
 #endif
+
+#define MARKED_POSITION @"marked_position"

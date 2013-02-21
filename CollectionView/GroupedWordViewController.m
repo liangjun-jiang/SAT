@@ -11,7 +11,7 @@
 #import "PhoneContentController.h"
 #import "SVProgressHUD.h"
 
-#define SCROLL_SPEED 0.5 //items per second, can be negative or fractional
+#define SCROLL_SPEED 0.3 //items per second, can be negative or fractional
 
 
 static NSString *NameKey = @"word";
@@ -77,6 +77,15 @@ static NSString *MeaningKey = @"meaning";
     self.title = self.contentDictionary[MarkedGroupKey];
     
     self.contentList = self.contentDictionary[MarkedGroup];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
+        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
+        NSString *rememebered = self.contentList[[markedPosition[@"row"] integerValue]][NameKey];
+        
+        NSString *message = [NSString stringWithFormat:@"Your last review was at %@ keep up!",rememebered];
+        [SVProgressHUD  showSuccessWithStatus:message];
+    }
     
     //configure carousel
     carousel.type = iCarouselTypeCylinder;

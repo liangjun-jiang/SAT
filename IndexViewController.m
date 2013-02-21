@@ -11,7 +11,6 @@
 #import "IndexViewController.h"
 #import "SVProgressHUD.h"
 
-#define MARKED_POSITION @"marked_position"
 
 @interface IndexViewController ()<UISearchBarDelegate, UISearchDisplayDelegate>
 {
@@ -149,7 +148,11 @@
         NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        NSString *message = [NSString stringWithFormat:@"Your last review was at %d of %@, keep up!", [markedPosition[@"row"] intValue],_sections[[markedPosition[@"section"] intValue]]];
+        [SVProgressHUD  showSuccessWithStatus:message];
     }
+    
+    
 }
 
 
