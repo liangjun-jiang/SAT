@@ -153,7 +153,7 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
         [collectionView dequeueReusableCellWithReuseIdentifier:PhotoCellIdentifier
                                                   forIndexPath:indexPath];
 
-    photoCell.imageView.image = [UIImage imageNamed:@"thumbnail0.jpg"];
+    photoCell.imageView.image = [UIImage imageNamed:@"a.png"];
 
     return photoCell;
 }

@@ -15,6 +15,7 @@
 //	UIView *myFooterView;
     UILabel *meaningLabel;
 	
+    UILabel *countLabel;
 	NSMutableArray *tableArray;
     
     NSDictionary *problem;
@@ -22,11 +23,16 @@
 
 @property (nonatomic, strong) IBOutlet UIView *myHeaderView;
 @property (nonatomic, strong) IBOutlet UILabel *meaningLabel;
+@property (nonatomic, strong) IBOutlet UILabel *countLabel;
+
 
 //@property (nonatomic, strong) IBOutlet UIView *myFooterView;
 @property (nonatomic, strong) NSMutableArray *tableArray;
 @property (nonatomic, strong) NSDictionary *problem;
 @property (nonatomic, strong) NSDictionary *guessedWord;
+@property (nonatomic, assign) NSUInteger page;
+@property (nonatomic, assign) NSUInteger totalCount;
+
 
 - (IBAction)button1Action:(id)sender;
 - (IBAction)button2Action:(id)sender;

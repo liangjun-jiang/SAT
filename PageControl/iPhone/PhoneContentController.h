@@ -73,5 +73,6 @@ extern const NSString *MarkedPage;
 @property (nonatomic, strong) NSMutableArray *viewControllers;
 
 - (IBAction)changePage:(id)sender;
+- (void)loadScrollViewWithPage:(int)page;
 
 @end

@@ -11,12 +11,12 @@
 #import "BHCollectionViewController.h"
 #import "GameViewController.h"
 
-//enum {
-//	kiPod = 0,
-//	kiPodtouch,
-//	kiPodnano,
-//	kiPodshuffle
-//};
+typedef enum{
+	learing = 0,
+	autoplay,
+	test,
+	game
+} SectionsTag;
 
 @interface MenuViewController()
 @property (nonatomic, strong) NSArray *menuItems;
@@ -83,23 +83,41 @@
     UINavigationController *navController = nil;
     
     if (indexPath.section == 0) {
-        if (indexPath.row == 2) {
-            TwoViewController *groupedViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-            navController = [[UINavigationController alloc] initWithRootViewController:groupedViewController];
-
-        } else if (indexPath.row == 1) {
-            BHCollectionViewController *collectionViewController = [[BHCollectionViewController alloc] initWithNibName:@"BHCollectionViewController" bundle:nil];
-            navController = [[UINavigationController alloc] initWithRootViewController:collectionViewController];
-            
-        } else if (indexPath.row == 3) {
-            GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
-            navController = [[UINavigationController alloc] initWithRootViewController:gameViewController];
-            
-            
+        switch (indexPath.row) {
+            case learing:
+            {
+                identifier = @"NavigationTop";
+                break;
+            }
+            case autoplay:
+            {
+                BHCollectionViewController *collectionViewController = [[BHCollectionViewController alloc] initWithNibName:@"BHCollectionViewController" bundle:nil];
+                navController = [[UINavigationController alloc] initWithRootViewController:collectionViewController];
+                break;
+            }
+            case test:
+            {
+                TwoViewController *groupedViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Grouped"];
+                navController = [[UINavigationController alloc] initWithRootViewController:groupedViewController];
+                break;
+            }
+            case game:
+            {
+                GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+                navController = [[UINavigationController alloc] initWithRootViewController:gameViewController];
+                break;
+            }
+            default:
+                break;
         }
+        
+        
     }
     
-    if (navController != nil) {
+    if (identifier != nil) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+        newTopViewController = [storyBoard instantiateViewControllerWithIdentifier:@"NavigationTop"];
+    } else if (navController != nil) {
         newTopViewController = navController;
     }
   

@@ -92,6 +92,9 @@ static NSString *MeaningKey = @"meaning";
     
     //start scrolling
     [self startScrolling];
+    
+    
+    // TODO: CAN WE AUTO SCROLL TO A LOCATION
 }
 
 - (void)viewDidUnload
@@ -212,6 +215,15 @@ static NSString *MeaningKey = @"meaning";
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *markedPosition = nil;
+    
+    // we save the new position
+    markedPosition = @{@"location":[NSNumber numberWithInt:index]};
+    [defaults setObject:markedPosition forKey:MARKED_POSITION];
+    [defaults synchronize];
+    
     [SVProgressHUD showSuccessWithStatus:@"Location Saved"];
     
 }

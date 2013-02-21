@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "WordViewController.h"
 #import "TestTableViewController.h"
+#import "SVProgressHUD.h"
 
 
 static NSString *NameKey = @"word";
@@ -61,10 +62,7 @@ NSString *MarkedPage = @"markedPage";
     
     self.title = self.contentDictionary[MarkedGroupKey];
     
-//    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStyleDone target:self action:@selector(onDone:)];
-//    self.navigationItem.leftBarButtonItem = doneButton;
-    
-    UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(onBookmark:)];
+    UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonItemStylePlain target:self action:@selector(onBookmark:)];
     self.navigationItem.rightBarButtonItem = bookmarkButton;
     
     self.contentList = self.contentDictionary[MarkedGroup];
@@ -112,11 +110,11 @@ NSString *MarkedPage = @"markedPage";
     
 }
 
+
+#pragma mark - IBAction
 - (void)onDone:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{
-//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//        [appDelegate.myTabBarController.tabBar setHidden:NO];
     }];
 }
 
@@ -130,8 +128,7 @@ NSString *MarkedPage = @"markedPage";
     [defaults synchronize];
     
     NSString *message = [NSString stringWithFormat:@"current page : %d is remembered.",pageControl.currentPage];
-    
-    [[[UIAlertView alloc] initWithTitle:@"Bookmark" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    [SVProgressHUD showSuccessWithStatus:message];
     
 }
 
@@ -149,7 +146,6 @@ NSString *MarkedPage = @"markedPage";
     
     if ((NSNull *)controller == [NSNull null])
     {
-//        controller = [[TestTableViewController alloc] initWithPageNumber:page andTotal:kNumberOfPages];
         NSDictionary *numberItem = (self.contentList)[page];
         
         int randomIndex0, randomIndex1, randomIndex2;
@@ -162,14 +158,11 @@ NSString *MarkedPage = @"markedPage";
         NSDictionary *option1 = (self.contentList)[randomIndex1];
         NSDictionary *option2 = (self.contentList)[randomIndex2];
         
-        NSDictionary *problem = @{@"WORD":numberItem, @"OPTIONS": @[option0, option1, option2]};
+        NSDictionary *pageInfo = @{@"PAGE":[NSNumber numberWithInt:page], @"COUNT":[NSNumber numberWithInt:self.contentList.count]};
         
-//        controller.problem = problem;
-        
+        NSDictionary *problem = @{@"PAGEINFO":pageInfo, @"WORD":numberItem, @"OPTIONS": @[option0, option1, option2]};
+
         controller = [[TestTableViewController alloc] initWithProblem:problem];
-        
-//        controller.meaningLabel.text = numberItem[MeaningKey];
-        
         viewControllers[page] = controller;
     }
     
@@ -181,24 +174,6 @@ NSString *MarkedPage = @"markedPage";
         frame.origin.y = 0;
         controller.view.frame = frame;
         [scrollView addSubview:controller.view];
-        
-//        NSDictionary *numberItem = (self.contentList)[page];
-//        controller.meaningLabel.text = numberItem[MeaningKey];
-//        
-//        int randomIndex0, randomIndex1, randomIndex2;
-//        if ([self.contentList count] !=0) {
-//            randomIndex0 = arc4random() % self.contentList.count;
-//            randomIndex1 = arc4random() % self.contentList.count;
-//            randomIndex2 = arc4random() % self.contentList.count;
-//        }
-//        NSDictionary *option0 = (self.contentList)[randomIndex0];
-//        NSDictionary *option1 = (self.contentList)[randomIndex1];
-//        NSDictionary *option2 = (self.contentList)[randomIndex2];
-//        
-//        NSDictionary *problem = @{@"WORD":numberItem, @"OPTIONS": @[option0, option1, option2]};
-//                                  
-//        controller.problem = problem;
-        //numberItem has key of word, type and meaning ...
     }
 }
 

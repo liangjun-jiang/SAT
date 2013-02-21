@@ -12,26 +12,16 @@
 
 #define WORD_KEY @"WORD"
 #define OPTIONS @"OPTIONS"
+#define PAGEINFO @"PAGEINFO"
 
 @implementation TestTableViewController
 
 @synthesize myHeaderView;
 //, myFooterView;
-@synthesize meaningLabel;
+@synthesize meaningLabel, countLabel, page, totalCount;
 @synthesize problem;
 @synthesize guessedWord;
 @synthesize tableArray;
-
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    self = [super initWithCoder:aDecoder];
-//    if (self) {
-//        
-//    }
-//    
-//    return self;
-//    
-//}
 
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -63,9 +53,15 @@
 - (void)viewDidLoad
 {
 	// setup our table data
-//	self.tableArray = @[@"Camping", @"Water Skiing", @"Weight Lifting", @"Stamp Collecting"];
     self.guessedWord = problem[WORD_KEY];
     self.tableArray = problem[OPTIONS];
+    
+    NSDictionary *pageInfo = problem[PAGEINFO];
+    page = [pageInfo[@"PAGE"] integerValue];
+    totalCount = [pageInfo[@"COUNT"] integerValue];
+    
+    // total count
+    self.countLabel.text = [NSString stringWithFormat:@"%d of %d", page + 1, totalCount];
     
     self.tableArray = [NSMutableArray arrayWithCapacity:4];
     [self.tableArray addObject:self.guessedWord];
@@ -75,10 +71,9 @@
     }];
     
     // we need shuffle the table array
-    NSUInteger count = 4;
-    for (NSUInteger i = 0; i < count; ++i) {
+    for (NSUInteger i = 0; i < [self.tableArray count]; ++i) {
         // Select a random element between i and end of array to swap with.
-        NSInteger nElements = count - i;
+        NSInteger nElements = [self.tableArray count] - i;
         NSInteger n = (arc4random() % nElements) + i;
         [self.tableArray exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
@@ -138,11 +133,8 @@
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
     NSDictionary *item = nil;
-//    if (indexPath.row !=3) {
     item = tableArray[indexPath.row];
     cell.textLabel.text = item[@"word"];
-//    } else
-//        cell.textLabel.text = @"right word";
 	
 	return cell;
 }
@@ -172,10 +164,21 @@
     
     if ([correctWord isEqualToString:selectedWord]) {
         selectedCell.backgroundColor = [UIColor greenColor];
+        [self performSelector:@selector(loadNextPage) withObject:nil afterDelay:1];
     } else
         selectedCell.backgroundColor = [UIColor redColor];
     
 }
+
+#pragma mark - loadNext
+- (void)loadNextPage
+{
+    if (page < totalCount) {
+        NSLog(@"parent view controller :%@",self.parentViewController);
+    }
+    
+}
+
 
 #pragma mark -
 #pragma mark Action methods
