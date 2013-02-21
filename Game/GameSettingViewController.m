@@ -52,10 +52,10 @@ static int MAX_NUM_LETTERS = 26;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults boolForKey:@"PURCHASED"]) {
-        self.navigationItem.rightBarButtonItem = nil;
-    }
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if ([defaults boolForKey:@"PURCHASED"]) {
+//        self.navigationItem.rightBarButtonItem = nil;
+//    }
 }
 
 
@@ -68,8 +68,8 @@ static int MAX_NUM_LETTERS = 26;
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
     self.navigationItem.leftBarButtonItem = doneItem;
     
-    UIBarButtonItem *noAdsItem = [[UIBarButtonItem alloc] initWithTitle:@"No Ads" style:UIBarButtonItemStyleDone target:self action:@selector(removeAds:)];
-    self.navigationItem.rightBarButtonItem = noAdsItem;
+//    UIBarButtonItem *noAdsItem = [[UIBarButtonItem alloc] initWithTitle:@"No Ads" style:UIBarButtonItemStyleDone target:self action:@selector(removeAds:)];
+//    self.navigationItem.rightBarButtonItem = noAdsItem;
     
     
 //    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"blackboard"]];

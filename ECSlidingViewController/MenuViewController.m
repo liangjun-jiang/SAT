@@ -44,19 +44,47 @@ typedef enum{
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    return 2;
+    return 3;
 }
 
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return (section == 0)? @"Tasks":@"Settings";
+    NSString *title = @"";
+    switch (section) {
+        case 0:
+            title = @"Tasks";
+            break;
+        case 1:
+            title = @"Settings";
+            break;
+        case 2:
+            title = @"About";
+            break;
+        default:
+            break;
+    }
+    return title;
+//    return (section == 0)? @"Tasks":@"Settings";
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return  (sectionIndex == 0)? self.menuItems.count: self.settingsItems.count;
+    NSUInteger count = 0;
+    switch (sectionIndex) {
+        case 0:
+            count = self.menuItems.count;
+            break;
+        case 1:
+            count = self.settingsItems.count;
+            break;
+        case 2:
+            count = 1;
+        default:
+            break;
+    }
+    return  count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,11 +94,15 @@ typedef enum{
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
   }
+    NSString *title = @"";
     if (indexPath.section == 0) {
-         cell.textLabel.text = (self.menuItems)[indexPath.row];
+         title = (self.menuItems)[indexPath.row];
+    } else if (indexPath.section == 1){
+        title = (self.settingsItems)[indexPath.row];
     } else
-        cell.textLabel.text = @"Logout";
+        title = @"Logout";
  
+    cell.textLabel.text = title;
   
   return cell;
 }

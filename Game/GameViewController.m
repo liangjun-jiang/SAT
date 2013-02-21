@@ -38,10 +38,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//        // Set defaults of preferences
-//        [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
-//                                    [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]]];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        // Set defaults of preferences
+        [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
+                                    [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]]];
     }
     
     return self;
@@ -52,11 +52,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:@"PURCHASED"]) {
-        self.bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)];
-        self.bannerView.delegate = self;
-    }
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if (![defaults boolForKey:@"PURCHASED"]) {
+//        self.bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)];
+//        self.bannerView.delegate = self;
+//    }
     
     // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
     // You just need to set the opacity, radius, and color.
@@ -111,8 +111,6 @@
     self.guessesLeft = [[defaults objectForKey:@"numGuesses"] intValue];
     self.numLetters = [[defaults objectForKey:@"numLetters"] intValue];
     self.isEvil = [defaults boolForKey:@"isEvil"];
-    
-   
     
     self.equivalenceClass = [[EquivalenceClass alloc] init];
     self.equivalenceClass.evil = self.isEvil;
@@ -175,7 +173,7 @@
                 word = [self.equivalenceClass guess:guessedLetter];
             }
             else {
-                word = [self.equivalenceClass guess:guessedLetter withGuessed:self.wordLabel.text];
+                word = [self.equivalenceClass guess:guessedLetter.lowercaseString withGuessed:self.wordLabel.text];
             }
             
             // subtract the number of guesses left if the guess is incorrect
@@ -294,7 +292,7 @@
     self.hintButton.hidden = NO;
     self.hintButton.highlighted = YES;
     
-    self.gameCenterButton.hidden = NO;
+    self.gameCenterButton.hidden = YES;
     self.gameCenterButton.enabled = YES;
 //    self.gameCenterButton.highlighted = YES;
     
@@ -306,11 +304,28 @@
     // update the directions
     self.directionsLabel.text = NSLocalizedString(@"The correct word is", @"The correct word is");
     
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
+    NSArray *tmp = [NSArray arrayWithContentsOfFile:path];
+    __block NSDictionary *selected = nil;
+    __block NSString *rightWord = (self.isEvil)?self.equivalenceClass.getTheWord:self.equivalenceClass.word;
+    [tmp enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary *item = (NSDictionary *)obj;
+        if ([obj[@"word"] isEqualToString:rightWord]) {
+            selected = item;
+            *stop = YES;
+        }
+        
+    }];
     // update the word
-    if (self.isEvil) {
-        self.wordLabel.text = self.equivalenceClass.getTheWord;
-    } else
-        self.wordLabel.text = self.equivalenceClass.word;
+//    if (self.isEvil) {
+//        self.wordLabel.text = self.equivalenceClass.getTheWord;
+//    } else {
+        // stupid to do it here
+        
+//    NSString *message = [NSString stringWithFormat:@"%@, %@", selected[@"word"], selected[@"meaning"]];
+    self.wordLabel.text = selected[@"word"];
+    self.guessedLettersLabel.text = selected[@"meaning"];
+//    }
     
     self.wordLabel.textColor = [UIColor redColor];
     // let the user learn the word
@@ -432,8 +447,7 @@
 #pragma mark - Leaderboard method
 - (IBAction)showLeaderboardButtonAction:(id)event 
 {
-//    NSString * leaderboardCategory = @"com.appledts.GameCenterSampleApps.leaderboard.seconds";
-    NSString * leaderboardCategory = @"com.ljsportapps.hangman.scoreboard";
+    NSString * leaderboardCategory = @"com.ljapps.sat.scoreboard";
     
     // The intent here is to show the leaderboard and then submit a score. If we try to submit the score first there is no guarentee
     // the server will have recieved the score when retreiving the current list
