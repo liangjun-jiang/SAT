@@ -93,16 +93,13 @@ NSString *MarkedPage = @"markedPage";
     pageControl.numberOfPages = kNumberOfPages;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:BookmarkKey] !=nil) {
-        NSDictionary *bookmarkDict = [defaults objectForKey:BookmarkKey];
-        if ([bookmarkDict[MarkedGroupKey] isEqualToString:self.contentDictionary[MarkedGroupKey]]) {
-            markedPageNumber = [bookmarkDict[MarkedPage] integerValue];
-            pageControl.currentPage = markedPageNumber;
-            if (markedPageNumber -1 > 0) {
-                [self changePage:nil];
-            }
-        }
-    } else {
+    NSDictionary *markedPosition = [defaults objectForKey:@"tested"];
+    NSUInteger savedPageNumber = markedPosition[self.contentDictionary[MarkedGroupKey]];
+    if (savedPageNumber > 1) {
+        pageControl.currentPage = savedPageNumber;
+        [self changePage:nil];
+       
+    }else {
         pageControl.currentPage = 0;
         [self loadScrollViewWithPage:0];
         [self loadScrollViewWithPage:1];
@@ -112,22 +109,17 @@ NSString *MarkedPage = @"markedPage";
 
 
 #pragma mark - IBAction
-- (void)onDone:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
-}
 
 - (void)onBookmark:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *dict = @{MarkedGroupKey:contentDictionary[MarkedGroupKey], MarkedPage:[NSNumber numberWithInt:pageControl.currentPage]};
-  
-    [defaults setObject:dict forKey:BookmarkKey];
+    NSDictionary *markedPosition = [defaults objectForKey:@"tested"];
     
+    NSString *key = self.contentDictionary[MarkedGroupKey];
+    [defaults setObject:[NSNumber numberWithInt:index] forKey:key];
     [defaults synchronize];
     
-    NSString *message = [NSString stringWithFormat:@"current page : %d is remembered.",pageControl.currentPage];
+    NSString *message = [NSString stringWithFormat:@"%d of %@ saved", self.pageControl.currentPage, key.capitalizedString];
     [SVProgressHUD showSuccessWithStatus:message];
     
 }

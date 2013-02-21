@@ -43,16 +43,16 @@
 - (void)lose;
 - (int)findLetter:(NSString *)letterToCheck;
 - (void)updateGuessedLettersAndCount;
-- (void)initDict;
+//- (void)initDict;
 - (void)checkResult;
 
 // present the leaderboard as a modal window
-- (void)showLeaderboard:(NSString *)leaderboard ;
-
-// An example of how to use Current time as a score
-- (void)insertCurrentTimeIntoLeaderboard:(NSString*)leaderboard ;
-
-// Disable all GameCenter functionality.
-- (void)enableGameCenter:(BOOL)enableGameCenter ;
+//- (void)showLeaderboard:(NSString *)leaderboard ;
+//
+//// An example of how to use Current time as a score
+//- (void)insertCurrentTimeIntoLeaderboard:(NSString*)leaderboard ;
+//
+//// Disable all GameCenter functionality.
+//- (void)enableGameCenter:(BOOL)enableGameCenter ;
 
 @end

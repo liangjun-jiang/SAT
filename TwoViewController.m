@@ -11,14 +11,6 @@
 #import "TwoViewController.h"
 #import "PhoneContentController.h"
 
-// table row constants for assigning cell titles
-//enum {
-//	kiPod = 0,
-//	kiPodtouch,
-//	kiPodnano,
-//	kiPodshuffle
-//};
-
 @interface TwoViewController () 
 	@property (nonatomic, strong) NSArray *dataArray;
     @property (nonatomic, strong) NSMutableArray *wordsByGroup;
@@ -53,7 +45,7 @@
 {
 	[super viewDidLoad];
     
-    self.title = @"Test";
+    self.title = @"Test Mode";
 	
     UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];
     self.navigationItem.leftBarButtonItem = menuItem;
@@ -109,17 +101,10 @@
     
     NSUInteger markedPageNumber = 0;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:BookmarkKey] !=nil) {
-        NSDictionary *bookmarkDict = [defaults objectForKey:BookmarkKey];
-        markedPageNumber = [bookmarkDict[MarkedPage] integerValue];
-        if ([key isEqualToString:bookmarkDict[MarkedGroupKey]]) {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
-        } else
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"total: %d",[dict[key] count]];
-        
-    } else
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"total: %d",[dict[key] count]];
-	
+    NSDictionary *bookmarkDict = [defaults objectForKey:@"tested"];
+    markedPageNumber = [bookmarkDict[key] integerValue];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
+
 	return cell;
 }
 

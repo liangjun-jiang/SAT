@@ -174,18 +174,9 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     
     NSUInteger markedPageNumber = 0;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:BookmarkKey] !=nil) {
-        NSDictionary *bookmarkDict = [defaults objectForKey:BookmarkKey];
-        markedPageNumber = [bookmarkDict[MarkedPage] integerValue];
-        if ([key isEqualToString:bookmarkDict[MarkedGroupKey]]) {
-            titleView.titleLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
-        } else
-            titleView.titleLabel.text = [NSString stringWithFormat:@"total: %d",[dict[key] count]];
-        
-    } else
-         titleView.titleLabel.text = [NSString stringWithFormat:@"total: %d",[dict[key] count]];
-    
-    
+    NSDictionary *bookmarkDict = [defaults objectForKey:@"grouped"];
+    markedPageNumber = [bookmarkDict[key] integerValue];
+    titleView.titleLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
     return titleView;
 }
 

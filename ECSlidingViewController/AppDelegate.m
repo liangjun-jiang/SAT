@@ -34,6 +34,12 @@
     
     [self displayLogin];
     
+    // this is important. we will use this again & again
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    // Set defaults of preferences
+    [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
+                                [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]]];
+    
   return YES;
 }
 

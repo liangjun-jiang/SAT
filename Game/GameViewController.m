@@ -38,10 +38,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        // Set defaults of preferences
-        [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
-                                    [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]]];
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        // Set defaults of preferences
+//        [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
+//                                    [[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"plist"]]];
     }
     
     return self;
@@ -68,11 +68,11 @@
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
     
-//    if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
-//        self.slidingViewController.underRightViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRight"];
-//    }
-//    
-//    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    if (![self.slidingViewController.underRightViewController isKindOfClass:[UnderRightViewController class]]) {
+        self.slidingViewController.underRightViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRight"];
+    }
+    
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
 
     
 }
@@ -82,7 +82,7 @@
 {
      self.title = @"Hangman";
     
-    UIBarButtonItem *settingsItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(newGame)];
+    UIBarButtonItem *settingsItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(showInfo:)];
    self.navigationItem.rightBarButtonItem = settingsItem;
     
     UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];

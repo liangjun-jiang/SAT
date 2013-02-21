@@ -217,14 +217,15 @@ static NSString *MeaningKey = @"meaning";
 {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *markedPosition = nil;
+    NSDictionary *markedPosition = [defaults objectForKey:@"grouped"];
     
-    // we save the new position
-    markedPosition = @{@"location":[NSNumber numberWithInt:index]};
-    [defaults setObject:markedPosition forKey:MARKED_POSITION];
+    NSString *key = self.contentDictionary[MarkedGroupKey];
+    [defaults setObject:[NSNumber numberWithInt:index] forKey:key];
     [defaults synchronize];
     
-    [SVProgressHUD showSuccessWithStatus:@"Location Saved"];
+    NSString *message = [NSString stringWithFormat:@"%d of %@ saved", index, key.capitalizedString];
+    
+    [SVProgressHUD showSuccessWithStatus:message];
     
 }
 
