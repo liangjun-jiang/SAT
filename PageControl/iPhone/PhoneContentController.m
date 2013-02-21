@@ -163,6 +163,7 @@ NSString *MarkedPage = @"markedPage";
         NSDictionary *problem = @{@"PAGEINFO":pageInfo, @"WORD":numberItem, @"OPTIONS": @[option0, option1, option2]};
 
         controller = [[TestTableViewController alloc] initWithProblem:problem];
+        controller.delegate = self;
         viewControllers[page] = controller;
     }
     
@@ -230,6 +231,14 @@ NSString *MarkedPage = @"markedPage";
     
 	// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
     pageControlUsed = YES;
+}
+
+#pragma mark - delegate method
+- (void)testTableViewNeedsToMove:(int)page
+{
+//    [self loadScrollViewWithPage:page];
+    pageControl.currentPage = page;
+    [self changePage:nil];
 }
 
 @end

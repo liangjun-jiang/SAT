@@ -9,6 +9,8 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol TestTableViewDelegate;
 @interface TestTableViewController : UITableViewController
 {
 	UIView *myHeaderView;
@@ -19,6 +21,8 @@
 	NSMutableArray *tableArray;
     
     NSDictionary *problem;
+    
+
 }
 
 @property (nonatomic, strong) IBOutlet UIView *myHeaderView;
@@ -32,6 +36,7 @@
 @property (nonatomic, strong) NSDictionary *guessedWord;
 @property (nonatomic, assign) NSUInteger page;
 @property (nonatomic, assign) NSUInteger totalCount;
+@property (nonatomic, assign) id <TestTableViewDelegate> delegate;
 
 
 - (IBAction)button1Action:(id)sender;
@@ -39,5 +44,11 @@
 
 //- (id)initWithPageNumber:(int)page andTotal:(int)total;
 - (id)initWithProblem:(NSDictionary *)theProblem;
+
+@end
+
+@protocol TestTableViewDelegate
+
+- (void)testTableViewNeedsToMove:(int)page;
 
 @end

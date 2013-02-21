@@ -49,13 +49,14 @@
 #import <Foundation/Foundation.h>
 
 #import "ContentController.h"
+#import "TestTableViewController.h"
 
 extern NSString * const BookmarkKey;
 extern const NSString *MarkedGroup;
 extern const NSString *MarkedGroupKey;
 extern const NSString *MarkedPage;
 
-@interface PhoneContentController : UIViewController <UIScrollViewDelegate>
+@interface PhoneContentController : UIViewController <UIScrollViewDelegate, TestTableViewDelegate>
 {   
     UIScrollView *scrollView;
 	UIPageControl *pageControl;

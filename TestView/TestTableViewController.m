@@ -22,6 +22,7 @@
 @synthesize problem;
 @synthesize guessedWord;
 @synthesize tableArray;
+@synthesize delegate;
 
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -174,7 +175,7 @@
 - (void)loadNextPage
 {
     if (page < totalCount) {
-        NSLog(@"parent view controller :%@",self.parentViewController);
+        [delegate testTableViewNeedsToMove:page + 1];
     }
     
 }
