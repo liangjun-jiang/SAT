@@ -37,7 +37,7 @@
     }
     self.slidingViewController.underRightViewController = nil;
     
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+//    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
     // reload in case new location saved
     [self.tableView reloadData];
@@ -102,12 +102,14 @@
     
     cell.textLabel.text = key;
     
-    NSUInteger markedPageNumber = 0;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    static NSUserDefaults *defaults;
+    if (defaults == nil) {
+        defaults = [NSUserDefaults standardUserDefaults];
+    }
     NSData *data = [defaults objectForKey:@"tested"];
     NSMutableDictionary *bookmarkDict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    markedPageNumber = [bookmarkDict[key] integerValue];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
+    NSDictionary *saved = bookmarkDict[key];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d of %d",[saved[@"index"] integerValue], [dict[key] count]];
 
 	return cell;
 }

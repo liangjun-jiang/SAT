@@ -21,12 +21,8 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
 
 @interface BHCollectionViewController ()
 
-@property (nonatomic, strong) NSMutableArray *albums;
 @property (nonatomic, strong) NSMutableArray *wordsByGroup;
-
 @property (nonatomic, weak) IBOutlet BHPhotoAlbumLayout *photoAlbumLayout;
-@property (nonatomic, strong) NSOperationQueue *thumbnailQueue;
-@property (nonatomic, strong) ContentController *contentController;
 @property (nonatomic, strong) NSArray *contents;
 @property (nonatomic, strong) NSArray *sections;
 
@@ -108,6 +104,10 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    self.collectionView = nil;
+    self.contents = nil;
+    self.wordsByGroup = nil;
+    
 }
 
 
@@ -172,18 +172,13 @@ static NSString * const AlbumTitleIdentifier = @"AlbumTitle";
     NSDictionary *dict = self.wordsByGroup[indexPath.section];
     NSString *key = self.sections[indexPath.section];
     
-//    NSUInteger markedPageNumber = 0;
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSDictionary *bookmarkDict = [defaults objectForKey:@"grouped"];
-//    markedPageNumber = [bookmarkDict[key] integerValue];
-//    titleView.titleLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
-    
-    NSUInteger markedPageNumber = 0;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    static NSUserDefaults *defaults;
+    if (defaults == nil)
+         defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:@"grouped"];
     NSMutableDictionary *bookmarkDict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    markedPageNumber = [bookmarkDict[key] integerValue];
-    titleView.titleLabel.text = [NSString stringWithFormat:@"%d of %d",markedPageNumber, [dict[key] count]];
+    NSDictionary *saved = bookmarkDict[key];
+    titleView.titleLabel.text = [NSString stringWithFormat:@"%d of %d",[saved[@"index"] integerValue], [dict[key] count]];
     
     return titleView;
 }

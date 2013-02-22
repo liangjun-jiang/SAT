@@ -10,6 +10,8 @@
 
 @interface UnderRightViewController()
 @property (nonatomic, assign) CGFloat peekLeftAmount;
+@property (nonatomic, strong) NSDictionary *indexed;
+
 @property (nonatomic, strong) NSMutableDictionary *tested;
 @property (nonatomic, strong) NSMutableDictionary *grouped;
 
@@ -17,7 +19,7 @@
 
 @implementation UnderRightViewController
 @synthesize peekLeftAmount;
-@synthesize tested, grouped;
+@synthesize indexed, tested, grouped;
 
 - (void)viewDidLoad
 {
@@ -33,9 +35,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    NSLog(@"always called ?!");
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
+        NSArray *sections = @[@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z"];
+        
+        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
+        indexed = @{@"location":markedPosition[@"row"], @"section":sections[[markedPosition[@"section"] intValue]]};
+    }
+    
     NSData *data = [defaults objectForKey:@"tested"];
     tested = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
@@ -130,32 +139,35 @@
     NSString *completed = @"has been completed!";
     NSString *key;
     NSUInteger location;
+    NSDictionary *saved;
     switch (indexPath.section) {
         case 0:
-            title = @"TBD";
+        {
+            location = [indexed[@"location"] integerValue];
+            key = indexed[@"section"];
+            title = [NSString stringWithFormat:@" %d of %@", location, key];;
             break;
+        }
         case 1:
         {
             key = [[grouped allKeys] objectAtIndex:indexPath.row];
-            location = [grouped[key] integerValue];
-            title = [NSString stringWithFormat:@" %d of %d for %@ %@", location, 1000,  key, completed];
+            saved = grouped[key];
+            title = [NSString stringWithFormat:@" %d of %d for %@", [saved[@"index"] integerValue], [saved[@"count"] integerValue],  key];
             
             break;
         }
-            
             case 2:
         {
             key = [[tested allKeys] objectAtIndex:indexPath.row];
-            location = [tested[key] integerValue];
-            title = [NSString stringWithFormat:@" %d of %d for %@ %@", location, 1000,  key, completed];
-            
-            
+            saved = tested[key];
+            title = [NSString stringWithFormat:@" %d of %d for %@", [saved[@"index"] integerValue], [saved[@"count"] integerValue],  key];
             break;
         }
         default:
             break;
     }
     cell.textLabel.text = title;
+    cell.detailTextLabel.text = completed;
     
     return cell;
 }

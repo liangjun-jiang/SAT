@@ -752,8 +752,6 @@
 				D6838A2516D6DBCC00E96E57 /* Theme */,
 				D683890A16D32CFA00E96E57 /* ECSlidingViewController */,
 				D68388EE16D2990B00E96E57 /* SVProgressHUD */,
-				D6C39E9216D0C5BA0087D216 /* iAd.framework */,
-				D6C39E8716D0C4170087D216 /* GameKit.framework */,
 				D6C39E7C16D0C3E90087D216 /* GA */,
 				D6C39E5A16D0C2060087D216 /* Game */,
 				D6C39E6216D0C2060087D216 /* inApp */,
@@ -791,6 +789,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6C39E9216D0C5BA0087D216 /* iAd.framework */,
+				D6C39E8716D0C4170087D216 /* GameKit.framework */,
 				D6C39E7016D0C2720087D216 /* StoreKit.framework */,
 				D6C39E4416D007D40087D216 /* AdSupport.framework */,
 				D6C39E4216D0079A0087D216 /* Accounts.framework */,

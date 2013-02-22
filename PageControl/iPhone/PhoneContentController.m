@@ -122,7 +122,9 @@ NSString *MarkedPage = @"markedPage";
     NSMutableDictionary *testedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     //
     NSString *key = self.contentDictionary[MarkedGroupKey];
-    [testedDictionary setObject:[NSNumber numberWithInt:self.pageControl.currentPage] forKey:key];
+    
+    NSDictionary *saved = @{@"index":[NSNumber numberWithInt:self.pageControl.currentPage], @"count":[NSNumber numberWithInt:[self.contentList count]]};
+    [testedDictionary setObject:saved forKey:key];
     
     // now we take steps back
     data = [NSKeyedArchiver archivedDataWithRootObject:testedDictionary];
@@ -132,8 +134,6 @@ NSString *MarkedPage = @"markedPage";
     
     NSString *message = [NSString stringWithFormat:@"%d of %@ saved", self.pageControl.currentPage, key.capitalizedString];
     [SVProgressHUD showSuccessWithStatus:message];
-    
-//    NSLog(@"",defaults)
     
 }
 

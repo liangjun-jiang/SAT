@@ -56,23 +56,17 @@
     // this is important. we will use this again & again
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     // Set defaults of preferences
-    if ([defaults objectForKey:@"tested"] == nil || [defaults objectForKey:@"grouped"]) {
-        NSLog(@"always inited?!");
-//        NSMutableDictionary *indexed = [NSMutableDictionary dictionaryWithCapacity:26];
+    if ([defaults objectForKey:@"tested"] == nil || [defaults objectForKey:@"grouped"] == nil) {
         NSMutableDictionary *grouped = [NSMutableDictionary dictionaryWithCapacity:26];
         NSMutableDictionary *tested = [NSMutableDictionary dictionaryWithCapacity:26];
-        
-//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:indexed];
-//        [defaults setObject:data forKey:@"indexed"];
         
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:grouped];
         [defaults setObject:data forKey:@"grouped"];
         
         data = [NSKeyedArchiver archivedDataWithRootObject:tested];
         [defaults setObject:data forKey:@"tested"];
+        [[[UIAlertView alloc] initWithTitle:@"Test" message:@"always inited!?" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
     }
-    
-    
     
   return YES;
 }
@@ -156,7 +150,6 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-//    [self.myTabBarController dismissViewControllerAnimated:NO completion:nil];
     self.window.rootViewController = [self rootViewController];
     [self.window makeKeyAndVisible];
 }
@@ -168,7 +161,6 @@
 
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-//    [self.myTabBarController dismissViewControllerAnimated:YES completion:nil];
     self.window.rootViewController = [self rootViewController];
     [self.window makeKeyAndVisible];
 }
@@ -199,8 +191,6 @@
 
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-//    [self.myTabBarController dismissViewControllerAnimated:YES completion:nil];
-    //    [self dismissViewControllerAnimated:YES completion:NULL];
     self.window.rootViewController = [self rootViewController];
     [self.window makeKeyAndVisible];
 }

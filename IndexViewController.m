@@ -45,12 +45,19 @@
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
+- (void)revealUnderright:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECLeft];
+}
 
 // this is called when its tab is first tapped by the user
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+    
+    UIBarButtonItem *progressItem = [[UIBarButtonItem alloc] initWithTitle:@"Summary" style:UIBarButtonItemStylePlain target:self action:@selector(revealUnderright:)];
+    self.navigationItem.rightBarButtonItem = progressItem;
 	
 	// Do any additional setup after loading the view, typically from a nib.
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 44.0)];
@@ -92,14 +99,17 @@
 	[self.tableView reloadData];
 	self.tableView.scrollEnabled = YES;
     
+    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:tableSelection animated:NO];
+    
     // check if the user has been marked to somewhere he wants to go.
     // We scroll to there
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
-//        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
-//        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
+        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -139,22 +149,8 @@
         self.slidingViewController.underRightViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UnderRight"];
     }
     
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+//    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
 	
-	// this UIViewController is about to re-appear, make sure we remove the current selection in our table view
-	NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
-	[self.tableView deselectRowAtIndexPath:tableSelection animated:NO];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:MARKED_POSITION] !=nil ) {
-        NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[markedPosition[@"row"] intValue] inSection:[markedPosition[@"section"] intValue]];
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        NSString *message = [NSString stringWithFormat:@"Your last review was at %d of %@, keep up!", [markedPosition[@"row"] intValue],_sections[[markedPosition[@"section"] intValue]]];
-        [SVProgressHUD  showSuccessWithStatus:message];
-    }
-    
-    
 }
 
 

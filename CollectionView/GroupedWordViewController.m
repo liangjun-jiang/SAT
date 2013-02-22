@@ -222,7 +222,10 @@ static NSString *MeaningKey = @"meaning";
     NSMutableDictionary *testedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     //
     NSString *key = self.contentDictionary[MarkedGroupKey];
-    [testedDictionary setObject:[NSNumber numberWithInt:index] forKey:key];
+    NSDictionary *saved = @{@"index":[NSNumber numberWithInt:index], @"count":[NSNumber numberWithInt:[self.contentList count]]};
+    [testedDictionary setObject:saved forKey:key];
+    
+//    [testedDictionary setObject:[NSNumber numberWithInt:index] forKey:key];
     
     // now we take steps back
     data = [NSKeyedArchiver archivedDataWithRootObject:testedDictionary];
