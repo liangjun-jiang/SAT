@@ -65,7 +65,7 @@
         
         data = [NSKeyedArchiver archivedDataWithRootObject:tested];
         [defaults setObject:data forKey:@"tested"];
-        [[[UIAlertView alloc] initWithTitle:@"Test" message:@"always inited!?" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
+//        [[[UIAlertView alloc] initWithTitle:@"Test" message:@"always inited!?" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
     }
     
   return YES;
