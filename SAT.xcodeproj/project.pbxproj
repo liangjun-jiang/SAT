@@ -41,6 +41,8 @@
 		D65E84E416DC51AC00A353CD /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D65E84E016DC51AC00A353CD /* Icon-Small-50.png */; };
 		D65E84E516DC51AC00A353CD /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D65E84E116DC51AC00A353CD /* Icon.png */; };
 		D65E84E616DC51AC00A353CD /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D65E84E216DC51AC00A353CD /* Icon@2x.png */; };
+		D65E84E916DC5A8C00A353CD /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D65E84E716DC5A8B00A353CD /* Icon-Small@2x.png */; };
+		D65E84EA16DC5A8C00A353CD /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D65E84E816DC5A8C00A353CD /* Icon-Small.png */; };
 		D68388F216D2990B00E96E57 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D68388EF16D2990B00E96E57 /* SVProgressHUD.bundle */; };
 		D68388F316D2990B00E96E57 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D68388F116D2990B00E96E57 /* SVProgressHUD.m */; };
 		D683890016D320CB00E96E57 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D68388F816D320CB00E96E57 /* bg.png */; };
@@ -366,6 +368,8 @@
 		D65E84E016DC51AC00A353CD /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		D65E84E116DC51AC00A353CD /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		D65E84E216DC51AC00A353CD /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D65E84E716DC5A8B00A353CD /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		D65E84E816DC5A8C00A353CD /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		D68388EF16D2990B00E96E57 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		D68388F016D2990B00E96E57 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		D68388F116D2990B00E96E57 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -816,6 +820,8 @@
 		530FE5D2128337E000678AD0 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				D65E84E716DC5A8B00A353CD /* Icon-Small@2x.png */,
+				D65E84E816DC5A8C00A353CD /* Icon-Small.png */,
 				D65E84DF16DC51AC00A353CD /* Icon-72.png */,
 				D65E84E016DC51AC00A353CD /* Icon-Small-50.png */,
 				D65E84E116DC51AC00A353CD /* Icon.png */,
@@ -1606,6 +1612,8 @@
 				D65E84E416DC51AC00A353CD /* Icon-Small-50.png in Resources */,
 				D65E84E516DC51AC00A353CD /* Icon.png in Resources */,
 				D65E84E616DC51AC00A353CD /* Icon@2x.png in Resources */,
+				D65E84E916DC5A8C00A353CD /* Icon-Small@2x.png in Resources */,
+				D65E84EA16DC5A8C00A353CD /* Icon-Small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1727,6 +1735,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Liangjun Jiang";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1745,7 +1754,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/GA\"",
 				);
-				PRODUCT_NAME = SAT;
+				PRODUCT_NAME = "New SAT Vocab";
+				PROVISIONING_PROFILE = "47B33B96-7E58-4F1B-93C5-437376835338";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1754,6 +1764,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Liangjun Jiang";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1770,7 +1781,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParty/GA\"",
 				);
-				PRODUCT_NAME = SAT;
+				PRODUCT_NAME = "New SAT Vocab";
+				PROVISIONING_PROFILE = "47B33B96-7E58-4F1B-93C5-437376835338";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1780,13 +1792,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Liangjun Jiang";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "47B33B96-7E58-4F1B-93C5-437376835338";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1795,12 +1807,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Liangjun Jiang";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "47B33B96-7E58-4F1B-93C5-437376835338";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
