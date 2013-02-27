@@ -93,7 +93,6 @@ static NSString *MeaningKey = @"meaning";
     //start scrolling
     [self startScrolling];
     
-    
     // TODO: CAN WE AUTO SCROLL TO A LOCATION
 }
 
@@ -113,6 +112,10 @@ static NSString *MeaningKey = @"meaning";
     //you are targeting iOS 5 as a minimum deployment target
     carousel.delegate = nil;
     carousel.dataSource = nil;
+    
+    self.contentDictionary = nil;
+    self.contentList = nil;
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -93,6 +93,7 @@
     
 }
 
+
 - (IBAction)revealMenu:(id)sender
 {
     [self.slidingViewController anchorTopViewTo:ECRight];
@@ -421,10 +422,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    //    NSLog(@"MainViewController viewDidUnload");
-    
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.equivalenceClass = nil;
+  
 }
 
 

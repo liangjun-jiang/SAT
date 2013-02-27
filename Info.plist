@@ -35,5 +35,10 @@
 	<string>iPad</string>
 	<key>UIMainStoryboardFile~iphone</key>
 	<string>iPhone</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
 </dict>
 </plist>

@@ -121,6 +121,8 @@
 - (void)viewDidUnload
 {
 	self.filteredListContent = nil;
+    _contents = nil;
+    self.tableView = nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
