@@ -48,11 +48,11 @@
     UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:@selector(revealMenu:)];
     self.navigationItem.leftBarButtonItem = menuItem;
     
-    self.nameTextField.text = @"SAT Voca";
+    self.nameTextField.text = @"New SAT Vocab";
     self.overviewTextField.text = @"A complete SAT Vocalubary App";
     self.versionTextField.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     
-    NSDictionary *developer = @{@"name":@"Liangjun Jiang", @"title":@"Developers"};
+    NSDictionary *developer = @{@"name":@"Mingming Chen, Liangjun Jiang", @"title":@"Developers"};
     NSDictionary *creative= @{@"name":@"Leah Wang", @"title":@"Creative"};
     self.authors = @[developer, creative];
     NSDictionary *credit1 = @{@"name":@"iCarousel", @"title":@"by Nick Lockwood", @"url":@"https://github.com/nicklockwood/iCarousel"};
@@ -183,6 +183,10 @@
     
     cell.textLabel.text = name;// self.authors[indexPath.row][@"name"];
     cell.detailTextLabel.text = subtitle; //self.authors[indexPath.row][@"title"];
+    if (indexPath.section ==1) {
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
+    }
 
 //    }
 //    
