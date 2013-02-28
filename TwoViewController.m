@@ -100,7 +100,8 @@
     NSString *key = self.sections[indexPath.row];
     
     
-    cell.textLabel.text = key;
+    cell.textLabel.text = key.uppercaseString;
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
     
     static NSUserDefaults *defaults;
     if (defaults == nil) {

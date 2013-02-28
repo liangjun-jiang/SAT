@@ -32,7 +32,7 @@
 #pragma mark Player Authentication
 
 -(void) authenticateLocalPlayer {
-	GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+	__block GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
 	
     localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error) {
         
@@ -41,16 +41,16 @@
 //        if ([CCDirector sharedDirector].isPaused)
 //            [[CCDirector sharedDirector] resume];
         
-        if (localPlayer.authenticated) {
-            _gameCenterFeaturesEnabled = YES;
-//            NSLog(@"what's this local player?%@",localPlayer);
-            
-        } else if(viewController) {
-//            [[CCDirector sharedDirector] pause];
-            [self presentViewController:viewController];
-        } else {
-            _gameCenterFeaturesEnabled = NO;
-        }
+//        if (localPlayer.authenticated) {
+//            _gameCenterFeaturesEnabled = YES;
+////            NSLog(@"what's this local player?%@",localPlayer);
+//            
+//        } else if(viewController) {
+////            [[CCDirector sharedDirector] pause];
+//            [self presentViewController:viewController];
+//        } else {
+//            _gameCenterFeaturesEnabled = NO;
+//        }
     };
 }
 

@@ -56,11 +56,20 @@ NSString *MarkedPage = @"markedPage";
     return self;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.contentList = nil;
+    self.viewControllers = nil;
+    self.scrollView = nil;
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.title = self.contentDictionary[MarkedGroupKey];
+    NSString *title = self.contentDictionary[MarkedGroupKey];
+    self.title = title.uppercaseString;
     
     UIBarButtonItem *bookmarkButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bookmark", @"") style:UIBarButtonItemStylePlain target:self action:@selector(onBookmark:)];
     self.navigationItem.rightBarButtonItem = bookmarkButton;
@@ -98,7 +107,8 @@ NSString *MarkedPage = @"markedPage";
     NSMutableDictionary *testedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     //
     NSString *key = self.contentDictionary[MarkedGroupKey];
-    NSUInteger savedPageNumber = [testedDictionary[self.contentDictionary[MarkedGroupKey]] integerValue];
+    NSDictionary *saved = testedDictionary[self.contentDictionary[MarkedGroupKey]];
+    NSUInteger savedPageNumber = [saved[@"index"] integerValue];
     if (savedPageNumber > 1) {
         pageControl.currentPage = savedPageNumber;
         [self changePage:nil];

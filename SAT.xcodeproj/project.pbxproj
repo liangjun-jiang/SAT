@@ -250,12 +250,6 @@
 		D69D215516C0B1880062FE0C /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D213516C0B1880062FE0C /* Tile.m */; };
 		D69D215616C0B1880062FE0C /* PhoneContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D213816C0B1880062FE0C /* PhoneContentController.m */; };
 		D69D215716C0B1880062FE0C /* WordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69D213A16C0B1880062FE0C /* WordViewController.m */; };
-		D69D215816C0B1880062FE0C /* large_five.png in Resources */ = {isa = PBXBuildFile; fileRef = D69D213C16C0B1880062FE0C /* large_five.png */; };
-		D69D215916C0B1880062FE0C /* large_four.png in Resources */ = {isa = PBXBuildFile; fileRef = D69D213D16C0B1880062FE0C /* large_four.png */; };
-		D69D215A16C0B1880062FE0C /* large_one.png in Resources */ = {isa = PBXBuildFile; fileRef = D69D213E16C0B1880062FE0C /* large_one.png */; };
-		D69D215B16C0B1880062FE0C /* large_six.png in Resources */ = {isa = PBXBuildFile; fileRef = D69D213F16C0B1880062FE0C /* large_six.png */; };
-		D69D215C16C0B1880062FE0C /* large_three.png in Resources */ = {isa = PBXBuildFile; fileRef = D69D214016C0B1880062FE0C /* large_three.png */; };
-		D69D215D16C0B1880062FE0C /* large_two.png in Resources */ = {isa = PBXBuildFile; fileRef = D69D214116C0B1880062FE0C /* large_two.png */; };
 		D69D215E16C0B1880062FE0C /* MyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69D214216C0B1880062FE0C /* MyView.xib */; };
 		D69D215F16C0B1880062FE0C /* PadContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69D214316C0B1880062FE0C /* PadContent.xib */; };
 		D69D216016C0B1880062FE0C /* PhoneContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69D214416C0B1880062FE0C /* PhoneContent.xib */; };
@@ -608,12 +602,6 @@
 		D69D213816C0B1880062FE0C /* PhoneContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneContentController.m; sourceTree = "<group>"; };
 		D69D213916C0B1880062FE0C /* WordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordViewController.h; sourceTree = "<group>"; };
 		D69D213A16C0B1880062FE0C /* WordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordViewController.m; sourceTree = "<group>"; };
-		D69D213C16C0B1880062FE0C /* large_five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_five.png; sourceTree = "<group>"; };
-		D69D213D16C0B1880062FE0C /* large_four.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_four.png; sourceTree = "<group>"; };
-		D69D213E16C0B1880062FE0C /* large_one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_one.png; sourceTree = "<group>"; };
-		D69D213F16C0B1880062FE0C /* large_six.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_six.png; sourceTree = "<group>"; };
-		D69D214016C0B1880062FE0C /* large_three.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_three.png; sourceTree = "<group>"; };
-		D69D214116C0B1880062FE0C /* large_two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_two.png; sourceTree = "<group>"; };
 		D69D214216C0B1880062FE0C /* MyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyView.xib; sourceTree = "<group>"; };
 		D69D214316C0B1880062FE0C /* PadContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PadContent.xib; sourceTree = "<group>"; };
 		D69D214416C0B1880062FE0C /* PhoneContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneContent.xib; sourceTree = "<group>"; };
@@ -1238,12 +1226,6 @@
 		D69D213B16C0B1880062FE0C /* LargeImages */ = {
 			isa = PBXGroup;
 			children = (
-				D69D213C16C0B1880062FE0C /* large_five.png */,
-				D69D213D16C0B1880062FE0C /* large_four.png */,
-				D69D213E16C0B1880062FE0C /* large_one.png */,
-				D69D213F16C0B1880062FE0C /* large_six.png */,
-				D69D214016C0B1880062FE0C /* large_three.png */,
-				D69D214116C0B1880062FE0C /* large_two.png */,
 			);
 			path = LargeImages;
 			sourceTree = "<group>";
@@ -1401,12 +1383,6 @@
 				D69D214E16C0B1880062FE0C /* content_iPhone.plist in Resources */,
 				D69D215116C0B1880062FE0C /* DetailPopoverViewController.xib in Resources */,
 				D69D215216C0B1880062FE0C /* DetailViewController.xib in Resources */,
-				D69D215816C0B1880062FE0C /* large_five.png in Resources */,
-				D69D215916C0B1880062FE0C /* large_four.png in Resources */,
-				D69D215A16C0B1880062FE0C /* large_one.png in Resources */,
-				D69D215B16C0B1880062FE0C /* large_six.png in Resources */,
-				D69D215C16C0B1880062FE0C /* large_three.png in Resources */,
-				D69D215D16C0B1880062FE0C /* large_two.png in Resources */,
 				D69D215E16C0B1880062FE0C /* MyView.xib in Resources */,
 				D69D215F16C0B1880062FE0C /* PadContent.xib in Resources */,
 				D69D216016C0B1880062FE0C /* PhoneContent.xib in Resources */,

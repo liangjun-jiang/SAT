@@ -83,7 +83,7 @@ static NSString *MeaningKey = @"meaning";
         NSDictionary *markedPosition = [defaults objectForKey:MARKED_POSITION];
         NSString *rememebered = self.contentList[[markedPosition[@"row"] integerValue]][NameKey];
         
-        NSString *message = [NSString stringWithFormat:@"Your last review was at %@ keep up!",rememebered];
+        NSString *message = [NSString stringWithFormat:@"Your last review was at %@. Keep up!",rememebered];
         [SVProgressHUD  showSuccessWithStatus:message];
     }
     
